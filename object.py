@@ -8,13 +8,15 @@ class Dogs:
     """class for tracking how many dogs you have."""
 
     # Attributes:
-    #   _num_dogs: how mamy dogs we have - must be nonnegative
+    #   _num_dogs: how mamy dogs we have - must be nonnegative int
 
     def __init__(self, start_num=None):
         """Set current number of dogs to given value - or 0 if none."""
 
         if start_num is None:
             start_num = 0
+        assert isinstance(start_num, int)
+
         self._num_dogs = start_num
 
     def how_many(self):
@@ -33,12 +35,12 @@ class Dogs:
         """
 
         self._num_dogs -= 1
-        if self._num_dogs < 0:
-            self._num_dogs = 0
         self._fix_num_dogs()
 
     def __iadd__(self, chg):
         """Add given value to our number of dogs."""
+
+        assert isinstance(chg, int)
 
         self._num_dogs += chg
         self._fix_num_dogs()
@@ -46,6 +48,8 @@ class Dogs:
 
     def __isub__(self, chg):
         """Subtract given value from our number of dogs."""
+
+        assert isinstance(chg, int)
 
         self._num_dogs -= chg
         self._fix_num_dogs()
@@ -66,7 +70,7 @@ class Dogs:
 # Main program
 
 # Make ourselves a dog counter
-my_dogs = Dogs(1)
+my_dogs = Dogs(1)  # Start with 1 dog
 
 # Get some more dogs
 my_dogs.get_a_dog()
@@ -74,11 +78,11 @@ my_dogs.get_a_dog()
 my_dogs += 2
 
 # Output the results
-print("Print results the hard way (should have 5 dogs):")
+print("Print results the hard way (must have 5 dogs):")
 print("I have", my_dogs.how_many(), "dogs.")
 print()
 
-print("Print results the easy way (should be same as above):")
+print("Print results the easy way (must be same as above):")
 print(my_dogs)
 print()
 
