@@ -45,13 +45,13 @@ if __name__ == "__main__":
     t2 -= 1
     print(f"'23:59:59'     - '{t2}'")
 
-    hms = t1.getTime()
+    hms = t1.get_time()
     print(f"'(0, 0, 0)'    - '{hms}'")
 
-    hms = t2.getTime()
+    hms = t2.get_time()
     print(f"'(23, 59, 59)' - '{hms}'")
 
-    t2.setTime(8, 3, 59)
+    t2.set_time(8, 3, 59)
     t2 += 1
     t3 = t2
     print(f"' 8:04:00'     - '{t3}'")

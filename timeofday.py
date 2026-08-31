@@ -1,7 +1,7 @@
 # timeofday.py  UNFINISHED
 # Glenn G. Chappell
 # 2026-08-31
-"""Class TimeOfDay: store & manupulate a time of day."""
+"""Class TimeOfDay: store & manipulate a time of day."""
 
 
 class TimeOfDay:
@@ -22,11 +22,11 @@ class TimeOfDay:
         assert isinstance(mm, int)
         assert isinstance(ss, int)
 
-        self.setTime(hh, mm, ss)
+        self.set_time(hh, mm, ss)
 
     # Normal methods
 
-    def getTime(self):
+    def get_time(self):
         """Return tuple holding hrs, mins, secs past midnight."""
 
         hh = self._secs // 60*60
@@ -34,7 +34,7 @@ class TimeOfDay:
         ss = self._secs - hh*60*60 - mm*60
         return (hh, mm, ss)
 
-    def setTime(self, hh, mm, ss):
+    def set_time(self, hh, mm, ss):
         """Given hrs, mins, secs, set time."""
 
         assert isinstance(hh, int)
@@ -60,7 +60,7 @@ class TimeOfDay:
 
     def __str__(self):
         """Informal string conversion: ' 8:30:05'."""
-        hms = self.getTime()
+        hms = self.get_time()
         result = ""
         if hms[0] < 10:
             result = " "
