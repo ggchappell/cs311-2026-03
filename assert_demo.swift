@@ -2,6 +2,7 @@
 // Glenn G. Chappell
 // 2026-08-25
 // Demo of assert in Swift
+// For CS 311 Fall 2026
 
 
 // max
@@ -19,6 +20,8 @@ func max(_ vals: [Int]) -> Int {
     return result
 }
 
+
+// Main program
 
 // Sum a nonempty array; should work
 print()
