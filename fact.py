@@ -1,7 +1,9 @@
 # fact.py
 # Glenn G. Chappell
 # 2026-08-24
-"""First Python program: compute factorials"""
+"""First Python program: compute factorials.
+For CS 311 Fall 2026
+"""
 
 
 def fact(n):

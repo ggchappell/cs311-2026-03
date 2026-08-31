@@ -1,7 +1,9 @@
 # assert.py
 # Glenn G. Chappell
 # 2026-08-26
-"""Using assert in Python."""
+"""Using assert in Python.
+For CS 311 Fall 2026
+"""
 
 
 def max(my_list):

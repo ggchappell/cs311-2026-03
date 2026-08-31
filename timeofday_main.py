@@ -2,8 +2,8 @@
 # timeofday_main.py
 # Glenn G. Chappell
 # 2026-08-31
-"""Simple program using class TimeOfDay,
-for CS 311 Fall 2026.
+"""Simple program using class TimeOfDay.
+For CS 311 Fall 2026
 
 Requires timeofday.py
 """

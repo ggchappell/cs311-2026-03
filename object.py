@@ -1,7 +1,9 @@
 # object.py
 # Glenn G. Chappell
 # 2026-08-28
-"""Classes, objects, operator overloading in Python."""
+"""Classes, objects, operator overloading in Python.
+For CS 311 Fall 2026
+"""
 
 
 class Dogs:

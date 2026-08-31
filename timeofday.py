@@ -1,7 +1,9 @@
 # timeofday.py  UNFINISHED
 # Glenn G. Chappell
 # 2026-08-31
-"""Class TimeOfDay: store & manipulate a time of day."""
+"""Class TimeOfDay: store & manipulate a time of day.
+For CS 311 Fall 2026
+"""
 
 
 class TimeOfDay:
