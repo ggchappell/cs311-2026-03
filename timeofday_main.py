@@ -4,6 +4,8 @@
 # 2026-08-31
 """Simple program using class TimeOfDay,
 for CS 311 Fall 2026.
+
+Requires timeofday.py
 """
 
 import timeofday  # For .TimeOfDay
