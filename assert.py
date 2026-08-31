@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # assert.py
 # Glenn G. Chappell
 # 2026-08-26

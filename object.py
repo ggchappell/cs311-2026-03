@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # object.py
 # Glenn G. Chappell
 # 2026-08-28

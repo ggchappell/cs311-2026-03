@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # fact.py
 # Glenn G. Chappell
 # 2026-08-24
