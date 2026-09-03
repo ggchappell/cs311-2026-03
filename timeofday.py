@@ -109,6 +109,7 @@ class TimeOfDay:
 
     def __str__(self):
         """Informal string conversion: ' 8:30:05'."""
+
         hh, mm, ss = self.get_time()
         result = ""
         if hh < 10:
