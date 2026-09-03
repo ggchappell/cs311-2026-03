@@ -50,6 +50,9 @@ class TimeOfDay:
     def get_time(self):
         """Return tuple holding hrs, mins, secs past midnight."""
 
+        assert isinstance(self._secs, int)
+        assert 0 <= self._secs < _SECS_IN_DAY
+
         hh = self._secs // _SECS_IN_HR
         mm = (self._secs - hh*_SECS_IN_HR) // _SECS_IN_MIN
         ss = self._secs - hh*_SECS_IN_HR - mm*_SECS_IN_MIN
@@ -110,6 +113,9 @@ class TimeOfDay:
     def __str__(self):
         """Informal string conversion: ' 8:30:05'."""
 
+        assert isinstance(self._secs, int)
+        assert 0 <= self._secs < _SECS_IN_DAY
+
         hh, mm, ss = self.get_time()
         result = ""
         if hh < 10:
@@ -126,12 +132,17 @@ class TimeOfDay:
     def __repr__(self):
         """Formal string conversion: ' 8:30:05'."""
 
+        assert isinstance(self._secs, int)
+        assert 0 <= self._secs < _SECS_IN_DAY
+
         return str(self)
 
     # ***** TimeOfDay: Private methods *****
 
     def _fix_secs(self):
         """Private. Ensure attribute _secs lies in range."""
+
+        assert isinstance(self._secs, int)
 
         if self._secs >= _SECS_IN_DAY or self._secs < 0:
             self._secs %= _SECS_IN_DAY
