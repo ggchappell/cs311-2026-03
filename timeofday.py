@@ -1,7 +1,7 @@
 # timeofday.py
 # Glenn G. Chappell
 # Started: 2026-08-31
-# Updated: 2026-09-02
+# Updated: 2026-09-11
 """Class TimeOfDay: store & manipulate a time of day.
 For CS 311 Fall 2026
 """
@@ -25,6 +25,12 @@ _SECS_IN_DAY = 24*_SECS_IN_HR
 
 
 class TimeOfDay:
+    """Holds time of day in seconds.
+
+    Invariants:
+    - 0 <= _secs < _SECS_IN_DAY
+    """
+
     # ***** TimeOfDay: List of attributes *****
 
     # - _secs: seconds past midnight - must be int in [0, _SECS_IN_DAY).
@@ -32,7 +38,11 @@ class TimeOfDay:
     # ***** TimeOfDay: Initializer *****
 
     def __init__(self, hh=None, mm=None, ss=None):
-        """Set time given hrs, mins, secs, or midnight if not given."""
+        """Set time given hrs, mins, secs, or midnight if not given.
+
+        Pre:
+        - hh, mm, ss all have type int.
+        """
 
         if hh is not None:
             assert isinstance(hh, int)
@@ -59,7 +69,11 @@ class TimeOfDay:
         return (hh, mm, ss)
 
     def set_time(self, hh, mm, ss):
-        """Given hrs, mins, secs, set time."""
+        """Given hrs, mins, secs, set time.
+
+        Pre:
+        - hh, mm, ss all have type int.
+        """
 
         assert isinstance(hh, int)
         assert isinstance(mm, int)
@@ -72,7 +86,11 @@ class TimeOfDay:
 
     # __add__: binary + operator
     def __add__(self, chg):
-        """Return new object advanced by chg seconds."""
+        """Return new object advanced by chg seconds.
+
+        Pre:
+        - chg has type int.
+        """
 
         assert isinstance(chg, int)
 
@@ -82,7 +100,11 @@ class TimeOfDay:
 
     # __sub__: binary - operator
     def __sub__(self, chg):
-        """Return new object reduced by chg seconds."""
+        """Return new object reduced by chg seconds.
+
+        Pre:
+        - chg has type int.
+        """
 
         assert isinstance(chg, int)
 
@@ -92,7 +114,11 @@ class TimeOfDay:
 
     # __iadd__: += operator
     def __iadd__(self, chg):
-        """Advance current object by chg seconds."""
+        """Advance current object by chg seconds.
+
+        Pre:
+        - chg has type int.
+        """
 
         assert isinstance(chg, int)
 
@@ -102,7 +128,11 @@ class TimeOfDay:
 
     # __isub__: -= operator
     def __isub__(self, chg):
-        """Reduce current object by chg seconds."""
+        """Reduce current object by chg seconds.
+
+        Pre:
+        - chg has type int.
+        """
 
         assert isinstance(chg, int)
 
