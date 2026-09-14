@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-# fibo_first.py  UNFINISHED
+# fibo_first.py
 # Glenn G. Chappell
-# 2026-09-13
+# Started: 2026-09-13
+# Updated: 2026-09-14
 """Computing Fibonacci numbers: slow recursive.
 For CS 311 Fall 2026
 """
@@ -11,10 +12,28 @@ import sys  # for .stdout
 
 
 def fibo(n):
-    """Given nonnegative int n, returns F(n)."""
+    """Given nonnegative int n, returns F(n).
 
-    return 42  # DUMMY
-    # TODO: WRITE THIS!!!
+    Pre:
+        isinstance(n, int)
+        n >= 0
+    """
+
+    assert isinstance(n, int)
+    assert n >= 0
+
+    # BASE CASE
+
+    # Invariant: n >= 0
+    assert n >= 0
+    if n <= 1:
+        return n
+
+    # RECURSIVE CASE
+
+    # Invariant: n >= 2
+    assert n >= 2
+    return fibo(n-2) + fibo(n-1)
 
 
 def user_pause(msg):
