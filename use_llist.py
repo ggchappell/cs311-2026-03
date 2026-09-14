@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-# use_llist.py  UNFINISHED
+# use_llist.py
 # Glenn G. Chappell
-# 2026-09-13
+# Started: 2026-09-13
+# Updated: 2026-09-14
 """Singly Linked List example: create & find size.
 For CS 311 Fall 2026
 """
@@ -12,10 +13,21 @@ import sys  # For .stdout
 
 
 def size(head):
-    """Return size of a Linked List, given its head."""
+    """Return size of a Linked List, given its head.
 
-    return 42  # DUMMY
-    # TODO: WRITE THIS!!!
+    Pre:
+    - head is None or llnode._LLNode.
+    """
+
+    assert (head is None) or isinstance(head, llnode._LLNode)
+
+    p = head
+    counter = 0
+    while p is not None:
+        p = p.next
+        counter += 1
+
+    return counter
 
 
 def user_pause(msg):
