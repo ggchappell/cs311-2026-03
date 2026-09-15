@@ -9,14 +9,14 @@ For CS 311 Fall 2026
 
 
 import llnode  # For ._LLNode
-import sys  # For .stdout
+import sys     # For .stdout
 
 
 def size(head):
     """Return size of a Linked List, given its head.
 
     Pre:
-    - head is None or llnode._LLNode.
+    * head is None or llnode._LLNode.
     """
 
     assert (head is None) or isinstance(head, llnode._LLNode)
@@ -31,7 +31,7 @@ def size(head):
 
 
 def user_pause(msg):
-    """Wait for user to press ENTER."""
+    """Print given message and wait for user to press ENTER."""
 
     assert isinstance(msg, str)
 
@@ -65,6 +65,7 @@ if __name__ == "__main__":
     else:
         print("WRONG *************************************************")
 
+    # Wait for user
     print()
     user_pause("Press ENTER to quit ")
 

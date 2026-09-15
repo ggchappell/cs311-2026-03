@@ -13,12 +13,16 @@ import sys  # For .stdout
 class Squares:
     """Iterable. Gives 0^2, 1^2, ..., (n-1)^2. n is initializer arg."""
 
+    # Attributes:
+    # * _end: positive int; we compute squares of integers in integers [0, _end).
+
     def __init__(self, end=None):
         """Create iterable with given end value (default: 10)."""
 
         if end is None:
             end = 10
         assert isinstance(end, int)
+        assert end > 0
 
         self._end = end
 
@@ -27,14 +31,16 @@ class Squares:
 
         return _SquaresIterator(self)
 
+# End class Squares
+
 
 class _SquaresIterator:
     """Iterator for type Squares. Internal-use only."""
     # See class Squares, above.
 
     # Attributes:
-    # - _the_sq - the Squares object we iterate through.
-    # - _value  - next value to square & return.
+    # * _the_sq: the Squares object we iterate through.
+    # * _value: next value to square & return.
 
     def __init__(self, the_sq):
         """Create iterator for given Squares object."""
@@ -61,9 +67,11 @@ class _SquaresIterator:
 
         return self
 
+# End class _SquaresIterator
+
 
 def user_pause(msg):
-    """Wait for user to press ENTER."""
+    """Print given message and wait for user to press ENTER."""
 
     assert isinstance(msg, str)
 
@@ -82,6 +90,7 @@ if __name__ == "__main__":
     for i in Squares(7):
         print(i)
 
+    # Wait for user
     print()
     user_pause("Press ENTER to quit ")
 

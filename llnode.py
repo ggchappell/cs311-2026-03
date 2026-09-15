@@ -14,14 +14,14 @@ class _LLNode:
     """Linked List Node.
 
     Invariants:
-    - next is either None or an _LLNode forming the head of a Linked
+    * next is either None or an _LLNode forming the head of a Linked
       List (with no cycles).
     """
 
     # ***** _LLNode: List of attributes *****
 
-    # - data: this node's data item
-    # - next: this node's next-node reference: None or _LLNode
+    # * data: this node's data item.
+    # * next: this node's next-node reference: None or _LLNode.
 
     # ***** _LLNode: Initializer *****
 
@@ -29,7 +29,7 @@ class _LLNode:
         """Set attributes to those given; next set to None if not given.
 
         Pre:
-        - next is None or _LLNode forming the head of a Linked List
+        * next is None or _LLNode forming the head of a Linked List.
           (with no cycles).
         """
 

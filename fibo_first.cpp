@@ -2,10 +2,11 @@
 // Glenn G. Chappell
 // 2026-09-14
 //
+// Computing Fibonacci Numbers: slow recursive
 // For CS 311 Fall 2026
-// Computing Fibonacci Numbers
-// First attempt: slow recursive implementation
 
+#include <string>
+using std::string;
 #include <iostream>
 using std::cout;
 using std::endl;
@@ -44,10 +45,11 @@ bignum fibo(int n)
 
 
 // userPause
-// Wait for user to press ENTER: read all chars through first newline.
-void userPause()
+// Print given message and wait for user to press ENTER.
+void userPause(const string & msg)
 {
     std::cout.flush();
+    cout << msg;
     while (std::cin.get() != '\n') ;
 }
 
@@ -77,7 +79,6 @@ int main()
     cout << endl;
 
     // Wait for user
-    cout << "Press ENTER to quit ";
-    userPause();
+    userPause("Press ENTER to quit ");
 }
 

@@ -11,7 +11,7 @@ class Dogs:
     """class for tracking how many dogs you have."""
 
     # Attributes:
-    #   _num_dogs: how mamy dogs we have - must be nonnegative int
+    # * _num_dogs: nonnegative int; how mamy dogs we have.
 
     def __init__(self, start_num=None):
         """Set current number of dogs to given value - or 0 if none."""
@@ -19,6 +19,7 @@ class Dogs:
         if start_num is None:
             start_num = 0
         assert isinstance(start_num, int)
+        assert start_num >= 0
 
         self._num_dogs = start_num
 
@@ -68,6 +69,8 @@ class Dogs:
 
         if self._num_dogs < 0:
             self._num_dogs = 0
+
+# End class Dogs
 
 
 # Main program

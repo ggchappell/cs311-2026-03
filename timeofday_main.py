@@ -13,7 +13,7 @@ import sys        # For .stdout
 
 
 def user_pause(msg):
-    """Wait for user to press ENTER."""
+    """Print given message and wait for user to press ENTER."""
 
     assert isinstance(msg, str)
 
@@ -62,6 +62,7 @@ if __name__ == "__main__":
     print(f"' 8:04:00'     - '{str(t3)}'")
     print(f"' 8:04:00'     - '{repr(t3)}'")
 
+    # Wait for user
     print()
     user_pause("Press ENTER to quit ")
 

@@ -11,7 +11,10 @@ import sys  # For .stdout
 
 
 class Cubes:
-    """Indexable. obj[i] is i^3 if i in [0..n). n is initializer arg."""
+    """Indexable. obj[i] is i^3 if i in [0,n). n is initializer arg."""
+
+    # Attributes:
+    # * _end: positive int; we compute cubes of integers in [0, _end).
 
     def __init__(self, end=None):
         """Create indexable for indices in [0, end) (default: 10)."""
@@ -19,6 +22,7 @@ class Cubes:
         if end is None:
             end = 10
         assert isinstance(end, int)
+        assert end > 0
 
         self._end = end
 
@@ -31,9 +35,11 @@ class Cubes:
 
         return ix * ix * ix
 
+# End class Cubes
+
 
 def user_pause(msg):
-    """Wait for user to press ENTER."""
+    """Print given message and wait for user to press ENTER."""
 
     assert isinstance(msg, str)
 
@@ -58,6 +64,7 @@ if __name__ == "__main__":
     for ix, val in enumerate(x):
         print(f"  {ix}: {val}")
 
+    # Wait for user
     print()
     user_pause("Press ENTER to quit ")
 

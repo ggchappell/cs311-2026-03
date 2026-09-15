@@ -9,6 +9,7 @@ For CS 311 Fall 2026
 
 def max(my_list):
     """Return the maximum value in nonempty list my_list."""
+
     assert isinstance(my_list, list), "max: mylist must be a list"
     assert len(my_list) > 0, "max: my_list must be nonempty"
 
@@ -18,6 +19,8 @@ def max(my_list):
             result = val
     return result
 
+
+# Main program
 
 # Sum a nonempty list; should work
 print()

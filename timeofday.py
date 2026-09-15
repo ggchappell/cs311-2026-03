@@ -28,12 +28,11 @@ class TimeOfDay:
     """Holds time of day in seconds.
 
     Invariants:
-    - 0 <= _secs < _SECS_IN_DAY
+    * 0 <= _secs < _SECS_IN_DAY.
     """
 
-    # ***** TimeOfDay: List of attributes *****
-
-    # - _secs: seconds past midnight - must be int in [0, _SECS_IN_DAY).
+    # Attributes:
+    # * _secs: seconds past midnight - must be int in [0, _SECS_IN_DAY).
 
     # ***** TimeOfDay: Initializer *****
 
@@ -41,7 +40,7 @@ class TimeOfDay:
         """Set time given hrs, mins, secs, or midnight if not given.
 
         Pre:
-        - hh, mm, ss all have type int.
+        * hh, mm, ss all have type int.
         """
 
         if hh is not None:
@@ -72,7 +71,7 @@ class TimeOfDay:
         """Given hrs, mins, secs, set time.
 
         Pre:
-        - hh, mm, ss all have type int.
+        * hh, mm, ss all have type int.
         """
 
         assert isinstance(hh, int)
@@ -89,7 +88,7 @@ class TimeOfDay:
         """Return new object advanced by chg seconds.
 
         Pre:
-        - chg has type int.
+        * chg has type int.
         """
 
         assert isinstance(chg, int)
@@ -103,7 +102,7 @@ class TimeOfDay:
         """Return new object reduced by chg seconds.
 
         Pre:
-        - chg has type int.
+        * chg has type int.
         """
 
         assert isinstance(chg, int)
@@ -117,7 +116,7 @@ class TimeOfDay:
         """Advance current object by chg seconds.
 
         Pre:
-        - chg has type int.
+        * chg has type int.
         """
 
         assert isinstance(chg, int)
@@ -131,7 +130,7 @@ class TimeOfDay:
         """Reduce current object by chg seconds.
 
         Pre:
-        - chg has type int.
+        * chg has type int.
         """
 
         assert isinstance(chg, int)

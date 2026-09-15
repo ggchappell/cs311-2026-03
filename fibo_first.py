@@ -37,7 +37,7 @@ def fibo(n):
 
 
 def user_pause(msg):
-    """Wait for user to press ENTER."""
+    """Print given message and wait for user to press ENTER."""
 
     assert isinstance(msg, str)
 
@@ -60,6 +60,7 @@ if __name__ == "__main__":
         ff = fibo(i)
         print(f"F({i:2d}) = {ff}")  # Pad i with blanks
 
+    # Wait for user
     print()
     user_pause("Press ENTER to quit ")
 

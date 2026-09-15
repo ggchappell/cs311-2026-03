@@ -303,7 +303,7 @@ class TestLargeValues(unittest.TestCase):
 
 
 def user_pause(msg):
-    """Wait for user to press ENTER."""
+    """Print given message and wait for user to press ENTER."""
 
     assert isinstance(msg, str)
 

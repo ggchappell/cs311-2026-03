@@ -15,6 +15,8 @@ def fact(n):
     return result
 
 
+# Main program
+
 k = 4
 print(k, "factorial:", fact(k))
 
