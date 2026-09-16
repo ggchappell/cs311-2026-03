@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-# bin_search1.py  UNFINISHED
+# bin_search1.py
 # Glenn G. Chappell
-# 2026-09-15
+# Started: 2026-09-15
+# Updated: 2026-09-16
 #
 # Binary Search
 # Implementation #1: recursive
@@ -15,10 +16,40 @@ def bin_search(key, container, index1=None, index2=None):
     """Do Binary Search for given key in given container.
     Range to be searched is [container[index1], container[index2]),
     or the whole container if index1, index2 are not passed.
+
+    Pre:
+    * If index1, index2 are both given, then:
+      * index1 and index2 have type int.
+      * index1 <= index2.
+      * Integers in [index1, index2) are valid indices for container.
     """
 
-    return False  # DUMMY
-    # TODO: WRITE THIS!!!
+    if index1 is None:
+        index1 = 0
+    assert isinstance(index1, int)
+    if index2 is None:
+        index2 = len(container)
+    assert isinstance(index2, int)
+    assert index2 >= index1
+
+    # BASE CASE
+
+    if index2 == index1:      # Range has size 0
+        return False
+    if index2 == index1 + 1:  # Range has size 1
+        return container[index1] == key
+
+    # RECURSIVE CASE
+
+    # Compute index of pivot: item in middle position of range
+    pivot_index = index1 + (index2 - index1)//2
+
+    if key < container[pivot_index]:
+        # Recursively search first half of range
+        return bin_search(key, container, index1, pivot_index)
+    else:
+        # Recursively search second half of range
+        return bin_search(key, container, pivot_index, index2)
 
 
 def try_bin_search(key, container, expect):
