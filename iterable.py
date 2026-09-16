@@ -14,7 +14,7 @@ class Squares:
     """Iterable. Gives 0^2, 1^2, ..., (n-1)^2. n is initializer arg."""
 
     # Attributes:
-    # * _end: positive int; we compute squares of integers in integers [0, _end).
+    # * _end: positive int; we compute squares of integers in [0, _end).
 
     def __init__(self, end=None):
         """Create iterable with given end value (default: 10)."""
