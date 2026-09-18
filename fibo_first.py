@@ -8,15 +8,17 @@ For CS 311 Fall 2026
 """
 
 
-import sys  # for .stdout
+import sys  # For .stdout
 
 
 def fibo(n):
-    """Given nonnegative int n, returns F(n).
+    """Nonneg int n -> F(n), the nth Fibonacci no.
+    F(0) = 0. F(1) = 1. For k >= 2, F(k) = F(k-2) + F(k-1).
+    Uses slow recursive method based on above recurrence.
 
     Pre:
-        isinstance(n, int)
-        n >= 0
+    * isinstance(n, int).
+    * n >= 0.
     """
 
     assert isinstance(n, int)
