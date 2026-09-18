@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-# fibo_iterate.py  UNFINISHED
+# fibo_iterate.py
 # Glenn G. Chappell
-# 2026-09-17
+# Started: 2026-09-17
+# Updated: 2026-09-18
 """Computing Fibonacci numbers: iterative.
 For CS 311 Fall 2026
 """
@@ -23,8 +24,14 @@ def fibo(n):
     assert isinstance(n, int)
     assert n >= 0
 
-    return 42  # DUMMY
-    # TODO: WRITE THIS!!!
+    prev = 1
+    curr = 0
+
+    for i in range(n):
+        # Advance prev, curr to the right by one
+        prev, curr = curr, prev + curr
+
+    return curr
 
 
 def user_pause(msg):
