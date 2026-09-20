@@ -2,10 +2,10 @@
 # bin_search2.py
 # Glenn G. Chappell
 # 2026-09-16
-#
-# Binary Search
-# Implementation #2: recursive (improved)
-# For CS 311 Fall 2026
+"""Binary Search: recursive (improved).
+Based on bin_search1.py
+For CS 311 Fall 2026
+"""
 
 
 import sys  # For .stdout
@@ -21,6 +21,8 @@ def bin_search(key, container, index1=None, index2=None):
       * index1 and index2 have type int.
       * index1 <= index2.
       * Integers in [index1, index2) are valid indices for container.
+    * Values in container[index1 .. index2-1], or in whole container
+      if index1, index2 not given, are sorted ascending by <.
     """
 
     if index1 is None:
@@ -41,7 +43,7 @@ def bin_search(key, container, index1=None, index2=None):
             return False
         return (not(container[index1] < key) and
                not(key < container[index1]))
-            # Range has size 1
+            # Range has size 1; check equivalence
 
     # RECURSIVE CASE
 

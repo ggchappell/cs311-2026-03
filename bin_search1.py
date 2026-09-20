@@ -3,10 +3,9 @@
 # Glenn G. Chappell
 # Started: 2026-09-15
 # Updated: 2026-09-16
-#
-# Binary Search
-# Implementation #1: recursive
-# For CS 311 Fall 2026
+"""Binary Search: recursive.
+For CS 311 Fall 2026
+"""
 
 
 import sys  # For .stdout
@@ -22,6 +21,8 @@ def bin_search(key, container, index1=None, index2=None):
       * index1 and index2 have type int.
       * index1 <= index2.
       * Integers in [index1, index2) are valid indices for container.
+    * Values in container[index1 .. index2-1], or in whole container
+      if index1, index2 not given, are sorted ascending by <.
     """
 
     if index1 is None:
