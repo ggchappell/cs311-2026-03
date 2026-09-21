@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-# seq_search_compare.py  UNFINISHED
+# seq_search_compare.py
 # Glenn G. Chappell
-# 2026-09-20
+# Started: 2026-09-20
+# Updated: 2026-09-21
 """Compare Sequential Search with Binary Search.
 Uses Binary Search implementation from bin_search2.py
 For CS 311 Fall 2026
@@ -9,6 +10,7 @@ For CS 311 Fall 2026
 
 
 import sys        # For .stdout
+import itertools  # For .islice
 
 
 def bin_search(key, container, index1=None, index2=None):
@@ -80,9 +82,29 @@ def try_bin_search(key, container, expect):
 
 
 def seq_search(key, container, index1=None, index2=None):
+    """Do Sequential Search for given key in given container.
+    Range to be searched is [container[index1], container[index2]),
+    or the whole container if index1, index2 are not passed.
 
-    return False  # Dummy
-    # TODO: WRITE THIS!!!
+    Pre:
+    * If index1, index2 are both given, then:
+      * index1 and index2 have type int.
+      * index1 <= index2.
+      * Integers in [index1, index2) are valid indices for container.
+    """
+
+    if index1 is None:
+        index1 = 0
+    assert isinstance(index1, int)
+    if index2 is None:
+        index2 = len(container)
+    assert isinstance(index2, int)
+    assert index2 >= index1
+
+    for val in itertools.islice(container, index1, index2):
+        if val == key:
+            return True
+    return False
 
 
 def try_seq_search(key, container, expect):
