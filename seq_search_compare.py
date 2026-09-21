@@ -3,7 +3,7 @@
 # Glenn G. Chappell
 # 2026-09-20
 """Compare Sequential Search with Binary Search.
-Uses Binary Search implementation from binsearch2.cpp
+Uses Binary Search implementation from bin_search2.py
 For CS 311 Fall 2026
 """
 
