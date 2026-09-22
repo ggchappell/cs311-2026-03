@@ -21,25 +21,6 @@ import itertools  # For .count, .islice
 
 
 # **********************************************************************
-# Helper Code
-# **********************************************************************
-
-
-class IterRaise:
-    """Helper for TestExceptions. __iter__ raises a given exception."""
-
-    def __init__(self, exc):
-        """Given exception is raised by __iter__."""
-
-        self._exc = exc
-
-    def __iter__(self):
-        """Raise saved exception."""
-
-        raise self._exc
-
-
-# **********************************************************************
 # Test Cases
 # **********************************************************************
 
@@ -362,7 +343,26 @@ class TestIterateTwice(unittest.TestCase):
 
 
 # **********************************************************************
-# Helper Funcs & Main Program
+# Helper Code
+# **********************************************************************
+
+
+class IterRaise:
+    """Helper for TestExceptions. __iter__ raises a given exception."""
+
+    def __init__(self, exc):
+        """Given exception is raised by __iter__."""
+
+        self._exc = exc
+
+    def __iter__(self):
+        """Raise saved exception."""
+
+        raise self._exc
+
+
+# **********************************************************************
+# Main Program
 # **********************************************************************
 
 
@@ -379,7 +379,7 @@ def user_pause(msg):
 
 if __name__ == '__main__':
     # Printable name for this test suite
-    test_suite_name = "class Player - CS 311 Assn 1, Ex A"
+    test_suite_name = "class LazySeq - CS 311 Assn 2, Ex A"
 
     # Run tests & print results
     print(f"BEGIN tests for {test_suite_name}")
