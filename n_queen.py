@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# n_queen.py  UNFINISHED
+# n_queen.py
 # Glenn G. Chappell
 # 2026-09-23
 """Print solutions to the n-Queens problem.
@@ -66,14 +66,78 @@ def print_board(board, n):
     print()
 
 
+# check_queen
+# Given a partial solution to the n-Queens Problem (see above),
+# determine whether a proposed new queen placement on the next row is
+# acceptable, that is, if it cannot attack any any of the existing
+# queens. If there is no possible attack, then the return value is
+# true.
+def check_queen(board, n, newcol):
+    assert isinstance(n, int)
+    assert n > 0
+    assert isinstance(board, list)
+    assert len(board) <= n
+    #for x in board:
+    #    assert isinstance(x, int)
+    #    assert 0 <= x < n
+    # board must represent a nonattacking placement of queens.
+
+    newrow = len(board)
+
+    # Iterate through existing queens
+    for oldrow in range(newrow):
+        oldcol = board[oldrow]
+
+        # Existing queen: oldrow, oldcol
+        # Proposed new queen: newrow, newcol
+        # Determine whether new queen can attack old queen
+
+        # Vertical attack (same column)?
+        if newcol == oldcol:
+            return False
+
+        # Diagonal attack
+        if newrow-oldrow == abs(newcol-oldcol):
+            return False
+
+        # NOTE. We do not need to check for horizontal attack (same
+        #  row) because of the assumption that there is at most one
+        #  queen in each row.
+
+    return True
+
 
 # n_queen_recurse
 # Given a partial solution to the n-Queens Problem (see above), print
 # out all non-attacking placements of n queens that include the given
 # queens.
 def n_queen_recurse(board, n):
-    print("Yo!")  # Dummy
-    # TODO: WRITE THIS!!!
+    assert isinstance(n, int)
+    assert n > 0
+    assert isinstance(board, list)
+    assert len(board) <= n
+    #for x in board:
+    #    assert isinstance(x, int)
+    #    assert 0 <= x < n
+    # board must represent a nonattacking placement of queens.
+
+    # BASE CASE
+
+    if len(board) == n:
+        # A full solution! Print it.
+        print_board(board, n)
+        return
+
+    # RECURSIVE CASE
+
+    # Try each position in next row
+    for newcol in range(n):
+        # If we can add a queen in position newcol in the next row ...
+        if check_queen(board, n, newcol):
+            # ... then do it, and recurse.
+            board.append(newcol)       # Add new queen
+            n_queen_recurse(board, n)  # Recursive call
+            board.pop();               # Remove new queen
 
 
 # n_queen
@@ -96,7 +160,7 @@ def n_queen(n):
 if __name__ == "__main__":
     while True:
         print()
-        print("n-Queen solver")
+        print("n-Queen Solver")
         print()
         try:
             line = input("Chessboard size (blank line to quit)? ")
