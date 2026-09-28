@@ -7,7 +7,6 @@ For CS 311 Fall 2026
 """
 
 
-import sys   # For .stdout
 import math  # For .sqrt
 
 
@@ -39,8 +38,8 @@ def user_pause(msg):
 
     assert isinstance(msg, str)
 
-    sys.stdout.flush()
-    dummy = input(msg)
+    print("", end="", flush=True)
+    _ = input(msg)
 
 
 # Main program

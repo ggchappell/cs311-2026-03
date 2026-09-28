@@ -9,7 +9,6 @@ For CS 311 Fall 2026
 
 
 import math  # for .log
-import sys   # for .stdout
 
 
 def print_results(n):
@@ -44,8 +43,8 @@ def user_pause(msg):
 
     assert isinstance(msg, str)
 
-    sys.stdout.flush()
-    dummy = input(msg)
+    print("", end="", flush=True)
+    _ = input(msg)
 
 
 # Main program

@@ -9,7 +9,6 @@ For CS 311 Fall 2026
 """
 
 
-import sys        # For .stdout
 import itertools  # For .islice
 
 
@@ -68,8 +67,7 @@ def try_bin_search(key, container, expect):
     assert isinstance(expect, bool)
 
     # Do search
-    print(f"Doing Binary Search for: {key}", end="")
-    sys.stdout.flush()
+    print(f"Doing Binary Search for: {key}", end="", flush=True)
 
     success = bin_search(key, data)
 
@@ -115,8 +113,7 @@ def try_seq_search(key, container, expect):
     assert isinstance(expect, bool)
 
     # Do search
-    print(f"Doing Sequential Search for: {key}", end="")
-    sys.stdout.flush()
+    print(f"Doing Sequential Search for: {key}", end="", flush=True)
 
     success = seq_search(key, data)
 
@@ -133,8 +130,8 @@ def user_pause(msg):
 
     assert isinstance(msg, str)
 
-    sys.stdout.flush()
-    dummy = input(msg)
+    print("", end="", flush=True)
+    _ = input(msg)
 
 
 # Main program
@@ -147,8 +144,8 @@ if __name__ == "__main__":
     assert DATA_SIZE > 100
 
     # Initialize data to search
-    print(f"Initializing data, DATA_SIZE = {DATA_SIZE:,} ... ", end="")
-    sys.stdout.flush()
+    print(f"Initializing data, DATA_SIZE = {DATA_SIZE:,} ... ",
+          end="", flush=True)
 
     data = list(range(0, 10*DATA_SIZE, 10))  # data is sorted
 

@@ -9,7 +9,6 @@ For CS 311 Fall 2026
 
 
 import llnode  # For ._LLNode
-import sys     # For .stdout
 
 
 def size(head):
@@ -35,8 +34,8 @@ def user_pause(msg):
 
     assert isinstance(msg, str)
 
-    sys.stdout.flush()
-    dummy = input(msg)
+    print("", end="", flush=True)
+    _ = input(msg)
 
 
 # Main program

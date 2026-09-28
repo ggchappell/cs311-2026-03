@@ -7,9 +7,6 @@ For CS 311 Fall 2026
 """
 
 
-import sys  # For .stdout
-
-
 class Squares:
     """Iterable. Gives 0^2, 1^2, ..., (n-1)^2. n is initializer arg."""
 
@@ -75,8 +72,8 @@ def user_pause(msg):
 
     assert isinstance(msg, str)
 
-    sys.stdout.flush()
-    dummy = input(msg)
+    print("", end="", flush=True)
+    _ = input(msg)
 
 
 # Main program

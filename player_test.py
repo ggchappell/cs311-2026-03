@@ -18,7 +18,7 @@ import player    # For .Player
 import unittest  # For .TestCase, .main
 
 # Other imports for test suite
-import sys       # For .stdout
+# None
 
 
 # **********************************************************************
@@ -307,8 +307,8 @@ def user_pause(msg):
 
     assert isinstance(msg, str)
 
-    sys.stdout.flush()
-    dummy = input(msg)
+    print("", end="", flush=True)
+    _ = input(msg)
 
 
 # Main program

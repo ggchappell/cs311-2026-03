@@ -8,9 +8,6 @@ For CS 311 Fall 2026
 """
 
 
-import sys  # For .stdout
-
-
 def fibo_pair(n):
     """Nonneg int n -> (F(n-1), F(n)); F(k) is kth Fibo.
     F(0) = 0. F(1) = 1. For k >= 2, F(k) = F(k-2) + F(k-1).
@@ -54,8 +51,8 @@ def user_pause(msg):
 
     assert isinstance(msg, str)
 
-    sys.stdout.flush()
-    dummy = input(msg)
+    print("", end="", flush=True)
+    _ = input(msg)
 
 
 # Main program

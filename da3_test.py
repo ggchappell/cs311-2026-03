@@ -16,7 +16,6 @@ import da3     # For .ll_iter, .create_ll, .does_it_raise, .mcss
 import unittest   # For .TestCase, .main
 
 # Other imports for test suite
-import sys        # For .stdout
 import itertools  # For .islice
 
 
@@ -278,8 +277,8 @@ def user_pause(msg):
 
     assert isinstance(msg, str)
 
-    sys.stdout.flush()
-    dummy = input(msg)
+    print("", end="", flush=True)
+    _ = input(msg)
 
 
 # Main program
