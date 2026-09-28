@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # bubble_sort.py
 # Glenn G. Chappell
-# 2026-09-27
+# Started: 2026-09-27
+# Updated: 2026-09-28
 """Sorting Demo: Bubble Sort.
 For CS 311 Fall 2026
 """
@@ -45,6 +46,8 @@ def bubble_sort(container, index1=None, index2=None):
         # container[size-which_pass-1], that is, on pairs 0,1 up to
         # size-which_pass-2,size-which_pass-1.
 
+        swapped = False  # True if any swaps during this pass
+
         for j in range(size-which_pass-1):
             # container[j], container[j+1] are current pair
 
@@ -52,6 +55,11 @@ def bubble_sort(container, index1=None, index2=None):
             if container[j+1] < container[j]:  # Out of order?
                 container[j], container[j+1] = (
                     container[j+1], container[j])  # Swap
+                swapped = True
+
+        # If no swaps, then array is sorted; we're done
+        if not swapped:
+            break
 
 
 def do_sort(container):
