@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-# merge_sort.py  UNFINISHED
+# merge_sort.py
 # Glenn G. Chappell
-# 2026-09-29
+# Started: 2026-09-29
+# Updated: 2026-09-30
 """Sorting Demo: Merge Sort (recursive).
 For CS 311 Fall 2026
 """
@@ -18,10 +19,44 @@ def merge_sort(container, index1=None, index2=None):
     """Do Merge Sort on given range.
     Range to be sorted is [container[index1], container[index2]),
     or the whole container if index1, index2 are not passed.
+
+    Uses stable_merge.
+
+    Pre:
+    * Container is an indexable sequence.
+    * If index1, index2 are both given, then:
+      * index1 and index2 have type int.
+      * index1 <= index2.
+      * Integers in [index1, index2) are valid indices for container.
     """
 
-    pass  # Do nothing, for now
-    # TODO: WRITE THIS!!!
+    if index1 is None:
+        index1 = 0
+    assert isinstance(index1, int)
+    if index2 is None:
+        index2 = len(container)
+    assert isinstance(index2, int)
+    assert index2 >= index1
+
+    # Compute size of range
+    size = index2 - index1
+
+    # BASE CASE
+
+    if size <= 1:
+        return
+
+    # RECURSIVE CASE
+
+    # Create iterator to middle of range
+    middle_index = index1 + size//2
+
+    # Recursively sort the two lists
+    merge_sort(container, index1, middle_index)
+    merge_sort(container, middle_index, index2)
+
+    # And merge them
+    stable_merge(container, index1, middle_index, index2);
 
 
 def stable_merge(container, begin, middle, end):
