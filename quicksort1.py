@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-# quicksort1.py  UNFINISHED
+# quicksort1.py
 # Glenn G. Chappell
-# 2026-10-01
+# Started: 2026-10-01
+# Updated: 2026-10-02
 """Sorting Demo: Quicksort (unoptimized).
 For CS 311 Fall 2026
 """
@@ -18,10 +19,44 @@ def quicksort(container, index1=None, index2=None):
     """Do Quicksort (unoptimized) on given range.
     Range to be sorted is [container[index1], container[index2]),
     or the whole container if index1, index2 are not passed.
+
+    Uses h_partition.
+
+    Pre:
+    * Container is an indexable sequence.
+    * If index1, index2 are both given, then:
+      * index1 and index2 have type int.
+      * index1 <= index2.
+      * Integers in [index1, index2) are valid indices for container.
     """
 
-    pass  # Do nothing, for now
-    # TODO: WRITE THIS!!!
+    if index1 is None:
+        index1 = 0
+    assert isinstance(index1, int)
+    if index2 is None:
+        index2 = len(container)
+    assert isinstance(index2, int)
+    assert index2 >= index1
+
+    # BASE CASE
+
+    if index2 - index1 <= 1:  # Size is 0 or 1
+        return
+
+    # RECURSIVE CASE
+
+    # Simple pivot choice: let the pivot be the first item
+    pivot_index = index1
+
+    # Do partition
+    assert index1 <= pivot_index < index2
+    pivot_index = h_partition(container, index1, index2, pivot_index)
+    assert index1 <= pivot_index < index2
+
+    # Two recursive sorts
+    quicksort(container, index1, pivot_index)
+    quicksort(container, pivot_index+1, index2)
+        # Range does not include the pivot
 
 
 def h_partition(container, index1, index2, pivot_index):
