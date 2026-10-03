@@ -46,11 +46,12 @@ def insertion_sort(container, index1=None, index2=None):
         save_item_i = container[i]
 
         # Find the spot for item i, moving up other items as we go
-        k = None  # We use k after the loop, so declare it outside
         for k in range(i, 0, -1):
             if not(save_item_i < container[k-1]):
                 break
             container[k] = container[k-1]
+        else:
+            k = 0
 
         # Item i should be in spot k; put it there
         container[k] = save_item_i
