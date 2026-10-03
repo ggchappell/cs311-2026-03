@@ -139,6 +139,10 @@ def do_sort(container):
     # Get ending time
     endtime = time_sec()
 
+    # Check correctness of sort
+    for i in range(len(container)-1):
+        assert container[i] <= container[i+1]
+
     # Message: after
     print("DONE")
     print(f"  Elapsed time: {endtime-starttime:.4g} (sec)")
