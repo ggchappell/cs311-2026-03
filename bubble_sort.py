@@ -128,9 +128,8 @@ def try_sort_nearly_sorted1():
 
     # Make dataset
     print("Creating dataset ... ", end="", flush=True)
-    data = [ i * MAX_VAL // BIG_SIZE for i in range(BIG_SIZE) ]
-    for i in range(0, BIG_SIZE-3, 2):
-        data[i], data[i+3] = data[i+3], data[i]
+    data = [ (i+3-2*(i%4)) * MAX_VAL // BIG_SIZE
+             for i in range(BIG_SIZE) ]
     assert len(data) == BIG_SIZE
     for val in data:
         assert 0 <= val <= MAX_VAL
