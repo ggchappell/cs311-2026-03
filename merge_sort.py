@@ -333,7 +333,7 @@ def user_pause(msg):
     assert isinstance(msg, str)
 
     print("", end="", flush=True)
-    dummy = input(msg)
+    _ = input(msg)
 
 
 # Main program
