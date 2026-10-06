@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-# quicksort2.py  UNFINISHED
+# quicksort2.py
 # Glenn G. Chappell
-# 2026-10-04
+# Started: 2026-10-04
+# Updated: 2026-10-05
 """Sorting Demo: Quicksort (optimized).
 For CS 311 Fall 2026
 """
@@ -14,14 +15,65 @@ BIG_SIZE = 3_000_000
 MAX_VAL = 999_999_999
 
 
-# Function quicksort copied from file quicksort1.py - REWRITE!!!
+def quicksort_recurse(container, index1, index2):
+    """Do Quicksort (unoptimized) on given range.
+    Range to be sorted is [container[index1], container[index2]).
+
+    Uses h_partition, median_of_3
+
+    Pre:
+    * Container is an indexable sequence.
+    * index1 and index2 have type int.
+    * index1 <= index2.
+    * Integers in [index1, index2) are valid indices for container.
+    """
+
+    assert isinstance(index1, int)
+    assert isinstance(index2, int)
+    assert index2 >= index1
+
+    SMALL_SIZE = 32  # Max size of "small" sublist
+                     #  This function does not sort these
+
+    while True:  # For tail-recursion elimination
+        # Compute size of range
+        size = index2 - index1
+
+        # BASE CASE
+
+        if size <= SMALL_SIZE:
+            return
+
+        # RECURSIVE CASE
+
+        # Find median-of-three pivot
+        pivot_index = median_of_3(container,
+                                  index1, index1 + size//2, index2-1)
+
+        # Do partition
+        assert index1 <= pivot_index < index2
+        pivot_index = h_partition(container,
+                                  index1, index2, pivot_index)
+        assert index1 <= pivot_index < index2
+
+        # Two sorts, with larger "recursive call" done via iteration.
+        if pivot_index-index1 < index2-(pivot_index+1):
+            quicksort_recurse(container, index1, pivot_index)
+            index1 = pivot_index+1
+        else:
+            quicksort_recurse(container, pivot_index+1, index2)
+            index2 = pivot_index
+
+        #quicksort_recurse(container, index1, index2)
+            # Tail recursion eliminated
+
 
 def quicksort(container, index1=None, index2=None):
-    """Do Quicksort (unoptimized) on given range.
+    """Do optimized Quicksrot on given range.
     Range to be sorted is [container[index1], container[index2]),
     or the whole container if index1, index2 are not passed.
 
-    Uses h_partition.
+    Uses quicksort_recurse, insertion_sort.
 
     Pre:
     * Container is an indexable sequence.
@@ -39,25 +91,11 @@ def quicksort(container, index1=None, index2=None):
     assert isinstance(index2, int)
     assert index2 >= index1
 
-    # BASE CASE
+    # Get data nearly sorted
+    quicksort_recurse(container, index1, index2)
 
-    if index2 - index1 <= 1:  # Size is 0 or 1
-        return
-
-    # RECURSIVE CASE
-
-    # Simple pivot choice: let the pivot be the first item
-    pivot_index = index1
-
-    # Do partition
-    assert index1 <= pivot_index < index2
-    pivot_index = h_partition(container, index1, index2, pivot_index)
-    assert index1 <= pivot_index < index2
-
-    # Two recursive sorts
-    quicksort(container, index1, pivot_index)
-    quicksort(container, pivot_index+1, index2)
-        # Range does not include the pivot
+    # Finish with Insertion Sort
+    insertion_sort(container, index1, index2)
 
 
 def h_partition(container, index1, index2, pivot_index):
