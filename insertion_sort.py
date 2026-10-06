@@ -101,6 +101,8 @@ def try_sort_small():
     # Make dataset
     print("Creating dataset ... ", end="", flush=True)
     data = [123456, 34, 0, 56, 2, 654321, 123, 1, 0, 99]
+    for i in range(len(data)):
+        data[i] %= (1+MAX_VAL)
     for val in data:
         assert 0 <= val <= MAX_VAL
     print("DONE")
