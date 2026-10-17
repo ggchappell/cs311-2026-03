@@ -14,6 +14,13 @@ class PArray:
     # * _alloc: allocator. Callable. Takes size, returns data object.
     # * _data: data object. Holds array of _size items.
     # * _size: size of our array.
+    #
+    # Class invariants:
+    # * _alloc is the allocator passed to __init__, or
+    #   allocator.Allocator, if this was omitted.
+    # * _data is a data object returned by _alloc, which can hold at
+    #   least _size items.
+    # * _size >= 0.
 
     def __init__(self, iterable=None, *, alloc=None):
         """Initialize from optional iterator. Use optional allocator."""
