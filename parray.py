@@ -1,7 +1,7 @@
-# parray.py  UNFINISHED
+# parray.py  HAND-OFF
 # Glenn G. Chappell
 # Started: 2026-10-14
-# Updated: 2026-10-16
+# Updated: 2026-10-19
 """Class PArray: array data structure.
 """
 
@@ -9,7 +9,13 @@
 import allocator  # For .Allocator
 
 
+# Minimum capacity for a PArray object
+_MIN_CAPACITY = 8
+
+
 class PArray:
+    """Array data structure. Similar to list."""
+
     # Attributes:
     # * _alloc: allocator. Callable. Takes size, returns data object.
     # * _data: data object. Holds array of _size items.
