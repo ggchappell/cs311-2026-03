@@ -138,7 +138,7 @@ class PArray:
     def append(self, value):
         """Append given value to array."""
 
-        resize(self._size + 1)
+        self.resize(self._size + 1)
         self._data[self._size-1] = value
 
     def extend(self, iterable):
