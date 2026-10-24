@@ -2,7 +2,7 @@
 # use_llist.py
 # Glenn G. Chappell
 # Started: 2026-09-13
-# Updated: 2026-09-14
+# Updated: 2026-10-23
 """Singly Linked List example: create & find size.
 For CS 311 Fall 2026
 """
@@ -29,6 +29,63 @@ def size(head):
     return counter
 
 
+def copy(head):
+    """Return a shallow copy of a Linked List, given its head.
+
+    Pre:
+    * head is None or llnode._LLnode.
+    """
+
+    assert (head is None) or isinstance(head, llnode._LLNode)
+
+    if head is None:
+        return None
+
+    new_head = llnode._LLNode(head.data)
+    last = new_head
+    p = head.next
+
+    while p is not None:
+        last.next = llnode._LLNode(p.data)
+        last = last.next
+        p = p.next
+
+    return new_head
+
+
+def mult_all(head, i):
+    """Replace each item in Linked List by i * the item.
+
+    Pre:
+    * head is None or llnode._LLnode.
+    * i is an int.
+    """
+
+    assert (head is None) or isinstance(head, llnode._LLNode)
+    assert isinstance(i, int)
+
+    p = head
+    while p is not None:
+        p.data *= i
+        p = p.next
+
+
+def print_llist(head):
+    """Print blank-separated Linked List items, then blank, newline.
+
+    Pre:
+    * head is None or llnode._LLnode.
+    """
+
+    assert (head is None) or isinstance(head, llnode._LLNode)
+
+    p = head
+    while p is not None:
+        print(str(p.data) + " ", end="")
+        p = p.next
+    print()
+
+
 def user_pause(msg):
     """Print given message and wait for user to press ENTER."""
 
@@ -43,7 +100,7 @@ def user_pause(msg):
 
 if __name__ == "__main__":
 
-    THE_SIZE = 507  # Size of list to create
+    THE_SIZE = 18  # Size of list to create
 
     # Create empty Linked List
     print("Creating empty Linked List")
@@ -63,6 +120,17 @@ if __name__ == "__main__":
         print("right!")
     else:
         print("WRONG *************************************************")
+
+    # Make a copy, modify it, print both
+    print()
+    i = 10
+    print(f"Making a copy and multiplying by {i}.")
+    new_head = copy(head)
+    mult_all(new_head, i)
+    print("Original: ", end="")
+    print_llist(head)
+    print("Modified copy: ", end="")
+    print_llist(new_head)
 
     # Wait for user
     print()
