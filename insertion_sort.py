@@ -83,7 +83,7 @@ def do_sort(container):
         assert container[i] <= container[i+1]
 
     # Message: after
-    print("DONE")
+    print("DONE", flush=True)
     print(f"  Elapsed time: {endtime-starttime:.4g} (sec)")
 
     print("  After:")
@@ -105,7 +105,7 @@ def try_sort_small():
         data[i] %= (1+MAX_VAL)
     for val in data:
         assert 0 <= val <= MAX_VAL
-    print("DONE")
+    print("DONE", flush=True)
     print(f"Size = {len(data):,}")
     print()
 
@@ -130,7 +130,7 @@ def try_sort_nearly_sorted1():
     assert len(data) == BIG_SIZE
     for val in data:
         assert 0 <= val <= MAX_VAL
-    print("DONE")
+    print("DONE", flush=True)
     print(f"Size = {len(data):,}")
     print()
 
@@ -156,7 +156,7 @@ def try_sort_nearly_sorted2():
     assert len(data) == BIG_SIZE
     for val in data:
         assert 0 <= val <= MAX_VAL
-    print("DONE")
+    print("DONE", flush=True)
     print(f"Size = {len(data):,}")
     print()
 
@@ -183,7 +183,7 @@ def try_sort_messy():
     assert len(data) == BIG_SIZE
     for val in data:
         assert 0 <= val <= MAX_VAL
-    print("DONE")
+    print("DONE", flush=True)
     print(f"Size = {len(data):,}")
     print()
 

@@ -99,7 +99,7 @@ if __name__ == "__main__":
 
     data = list(range(0, 10*DATA_SIZE, 10))  # data is sorted
 
-    print("DONE")
+    print("DONE", flush=True)
     print()
 
     # List of searches to do
