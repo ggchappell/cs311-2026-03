@@ -129,7 +129,7 @@ def do_sort(container):
     print("  Sorting ... ", end="", flush=True)
 
     # Get starting time
-    starttime = time_sec()
+    start_time = time_sec()
 
     # *********************************************************
     # * THE FOLLOWING MUST BE THE APPROPRIATE SORTING CALL!!! *
@@ -137,7 +137,7 @@ def do_sort(container):
     iterative_merge_sort(container)
 
     # Get ending time
-    endtime = time_sec()
+    end_time = time_sec()
 
     # Check correctness of sort
     for i in range(len(container)-1):
@@ -145,7 +145,7 @@ def do_sort(container):
 
     # Message: after
     print("DONE", flush=True)
-    print(f"  Elapsed time: {endtime-starttime:.4g} (sec)")
+    print(f"  Elapsed time: {end_time-start_time:.4g} (sec)")
 
     print("  After:")
     print(f"    {iter_str(container, 75)}")
