@@ -61,7 +61,7 @@ def fibo(n):
 
     # Variables in function fibo:
     # * cs - our call stack.
-    # * tmp_return_value - holds return value during pop of call stack.
+    # * tmp - holds return value during pop of call stack.
     # * skip_to - location to "goto" after continue; possible values:
     #   * 0 - making recursive call; goto start of function.
     #   * 1 - returning from recursive call #1.
@@ -81,13 +81,13 @@ def fibo(n):
 
     cs = list()  # Call stack
     cs.append(StackFrame(return_addr=0, n=n))
-    skip_to = 0
 
     # **************************************************
     # BEGIN LOOP
     # while True loop used for recursion elimination
     # **************************************************
 
+    skip_to = 0
     while True:
 
         if skip_to == 0:
@@ -105,10 +105,10 @@ def fibo(n):
                 cs[-1].return_value = cs[-1].n
 
                 if cs[-1].return_addr == 0:
-                    tmp_return_value = cs[-1].return_value
+                    tmp = cs[-1].return_value
                     cs.pop()
                     assert len(cs) == 0
-                    return tmp_return_value
+                    return tmp
                 skip_to = cs[-1].return_addr
                 assert skip_to == 1 or skip_to == 2
                 continue
@@ -131,10 +131,10 @@ def fibo(n):
             # Return from recursive call #1 here
 
             assert len(cs) > 0
-            tmp_return_value = cs[-1].return_value
+            tmp = cs[-1].return_value
             cs.pop()
             assert len(cs) > 0
-            cs[-1].r1 = tmp_return_value
+            cs[-1].r1 = tmp
 
             # **************************************************
             # ORIGINAL CODE:
@@ -152,10 +152,10 @@ def fibo(n):
             # Return from recursive call #2 here
 
             assert len(cs) > 0
-            tmp_return_value = cs[-1].return_value
+            tmp = cs[-1].return_value
             cs.pop()
             assert len(cs) > 0
-            cs[-1].r2 = tmp_return_value
+            cs[-1].r2 = tmp
 
             # **************************************************
             # ORIGINAL CODE:
