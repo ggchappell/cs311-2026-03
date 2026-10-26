@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-# rpn_calc.py  UNFINISHED
+# rpn_calc.py
 # Glenn G. Chappell
-# 2026-10-25
+# Started: 2026-10-25
+# Updated: 2026-10-26
 """Text-Input RPN Calculator.
 For CS 311 Fall 2026
 """
@@ -17,7 +18,46 @@ def rpn_eval(s, lexeme):
     ZeroDivisionError.
     """
 
-    # TODO: WRITE THIS!!!
+    attr = getattr(s, "append", None)
+    assert callable(attr)
+    attr = getattr(s, "pop", None)
+    assert callable(attr)
+    assert isinstance(lexeme, str)
+
+    try:
+        val = int(lexeme)
+    except:
+        pass  # Exception raised means this lexeme is not an int
+    else:
+        s.append(val)
+        return
+
+    if lexeme in { "+", "-", "*", "/" }:
+        if len(s) < 2:
+            s.clear()
+            raise IndexError("rpn_eval: pop from empty Stack")
+        b = s.pop()
+        a = s.pop()
+        assert isinstance(a, int)
+        assert isinstance(b, int)
+
+        match lexeme:
+            case "+":
+                s.append(a + b)
+            case "-":
+                s.append(a - b)
+            case "*":
+                s.append(a * b)
+            case "/":
+                if b == 0:
+                    raise ZeroDivisionError("rpn_eval: div by zero")
+                s.append(a // b)
+
+    elif lexeme in { "c", "C" }:
+        s.clear()
+
+    else:
+        raise ValueError("rpn_eval: bad command")
 
 
 def print_stack(s):
