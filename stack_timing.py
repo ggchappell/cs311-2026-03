@@ -8,24 +8,35 @@ For CS 311 Fall 2026
 
 
 import collections  # for .deque
+import queue        # for .LifoQueue
 
 
 # Number of pushes & pops to do
-NUM_OPS = 50_000_000
+NUM_OPS = 10_000_000
 
 
 def run_ops(dataset):
-    """Do NUM_OPS append & pop ops on dataset, with printed messages."""
+    """Do NUM_OPS push & pop ops on dataset, print messages."""
 
-    print(f"  {NUM_OPS:,} push (append) & pop operations")
+    print(f"  {NUM_OPS:,} push & pop operations")
     print("  Running ... ", end="", flush=True)
 
     start_time = time_sec()
 
+    if isinstance(dataset, queue.LifoQueue):
+        my_push = dataset.put
+        my_pop = dataset.get
+    elif (isinstance(dataset, list)
+      or isinstance(dataset, collections.deque)):
+        my_push = dataset.append
+        my_pop = dataset.pop
+    else:
+        raise TypeError("run_ops: queue is not of a supported type")
+
     for i in range(NUM_OPS):
-        dataset.append(42)
+        my_push(42)
     for i in range(NUM_OPS):
-        dataset.pop()
+        my_pop()
 
     end_time = time_sec()
 
@@ -62,8 +73,13 @@ def user_pause(msg):
 
 if __name__ == "__main__":
 
+    # ***** Initial Message *****
+
+    print("Timing Stack Operations")
+
     # ***** list *****
 
+    print()
     print("list")
     dataset = list()
     run_ops(dataset)
@@ -73,6 +89,13 @@ if __name__ == "__main__":
     print()
     print("collections.deque")
     dataset = collections.deque()
+    run_ops(dataset)
+
+    # ***** queue.LifoQueue *****
+
+    print()
+    print("queue.LifoQueue")
+    dataset = queue.LifoQueue()
     run_ops(dataset)
 
     # ***** Done *****
