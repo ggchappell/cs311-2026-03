@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 # parray_test.py
 # Glenn G. Chappell
-# 2026-09-23
+# Started: 2026-10-23
+# Updated: 2026-10-30
 """Test program for class PArray.
 For CS 311 Fall 2026
 
@@ -26,38 +27,38 @@ import unittest   # For .TestCase, .main
 # ***** Tests that pass in "HAND-OFF" version of parray.py *****
 
 
-class TestReturnTypes(unittest.TestCase):
+class Test00ReturnTypes(unittest.TestCase):
     """Test PArray method return types."""
 
-    def test_len_return_type(self):
+    def test_00_len_return_type(self):
         p1 = parray.PArray([1,2,3])
         result = p1.__len__()
 
         self.assertIsInstance(result, int,
             "PArray.__len__ must return int")
 
-    def test_bool_return_type(self):
+    def test_01_bool_return_type(self):
         p1 = parray.PArray([1,2,3])
         result = p1.__bool__()
 
         self.assertIsInstance(result, bool,
             "PArray.__bool__ must return bool")
 
-    def test_str_return_type(self):
+    def test_02_str_return_type(self):
         p1 = parray.PArray([1,2,3])
         result = p1.__str__()
 
         self.assertIsInstance(result, str,
             "PArray.__str__ must return str")
 
-    def test_repr_return_type(self):
+    def test_03_repr_return_type(self):
         p1 = parray.PArray([1,2,3])
         result = p1.__repr__()
 
         self.assertIsInstance(result, str,
             "PArray.__repr__ must return str")
 
-    def test_index_return_type(self):
+    def test_04_index_return_type(self):
         p1 = parray.PArray([1,2,3])
         result = p1.index(2)
 
@@ -65,10 +66,10 @@ class TestReturnTypes(unittest.TestCase):
             "PArray.index must return int")
 
 
-class TestBracketOpRead(unittest.TestCase):
+class Test01BracketOpRead(unittest.TestCase):
     "Test PArray bracket operator read (__getitem__)."""
 
-    def test_read_a(self):
+    def test_00_read_a(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
         result = p1[0]
@@ -76,7 +77,7 @@ class TestBracketOpRead(unittest.TestCase):
         self.assertIsInstance(result, int)
         self.assertEqual(result, 1)
 
-    def test_read_b(self):
+    def test_01_read_b(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
         result = p1[1]
@@ -84,7 +85,7 @@ class TestBracketOpRead(unittest.TestCase):
         self.assertIsInstance(result, float)
         self.assertEqual(result, 2.2)
 
-    def test_read_c(self):
+    def test_02_read_c(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
         result = p1[2]
@@ -92,7 +93,7 @@ class TestBracketOpRead(unittest.TestCase):
         self.assertIsInstance(result, str)
         self.assertEqual(result, "3")
 
-    def test_neg_index_a(self):
+    def test_03_neg_index_a(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
         result = p1[-1]
@@ -100,7 +101,7 @@ class TestBracketOpRead(unittest.TestCase):
         self.assertIsInstance(result, str)
         self.assertEqual(result, "3")
 
-    def test_neg_index_b(self):
+    def test_04_neg_index_b(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
         result = p1[-2]
@@ -108,7 +109,7 @@ class TestBracketOpRead(unittest.TestCase):
         self.assertIsInstance(result, float)
         self.assertEqual(result, 2.2)
 
-    def test_neg_index_c(self):
+    def test_05_neg_index_c(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
         result = p1[-3]
@@ -116,122 +117,122 @@ class TestBracketOpRead(unittest.TestCase):
         self.assertIsInstance(result, int)
         self.assertEqual(result, 1)
 
-    def test_out_of_range_a(self):
+    def test_06_out_of_range_a(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
         with self.assertRaises(IndexError):
             result = p1[3]
 
-    def test_out_of_range_b(self):
+    def test_07_out_of_range_b(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
         with self.assertRaises(IndexError):
             result = p1[100]
 
-    def test_out_of_range_c(self):
+    def test_08_out_of_range_c(self):
         p1 = parray.PArray()
         self.assertEqual(len(p1), 0)
         with self.assertRaises(IndexError):
             result = p1[0]
 
-    def test_out_of_range_neg_a(self):
+    def test_09_out_of_range_neg_a(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
         with self.assertRaises(IndexError):
             result = p1[-4]
 
-    def test_out_of_range_neg_b(self):
+    def test_10_out_of_range_neg_b(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
         with self.assertRaises(IndexError):
             result = p1[-100]
 
-    def test_out_of_range_neg_c(self):
+    def test_11_out_of_range_neg_c(self):
         p1 = parray.PArray()
         self.assertEqual(len(p1), 0)
         with self.assertRaises(IndexError):
             result = p1[-1]
 
-    def test_non_int_index_a(self):
+    def test_12_non_int_index_a(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
         with self.assertRaises((TypeError, AssertionError)):
             result = p1[2.0]
 
-    def test_non_int_index_b(self):
+    def test_13_non_int_index_b(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
         with self.assertRaises((TypeError, AssertionError)):
             result = p1["x"]
 
 
-class TestBracketOpWrite(unittest.TestCase):
+class Test02BracketOpWrite(unittest.TestCase):
     "Test PArray bracket operator write (__setitem__) & read."""
 
-    def test_write_a(self):
+    def test_00_write_a(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
         p1[0] = True
 
         self.assertEqual(list(p1), [True,2.2,"3"])
 
-    def test_write_b(self):
+    def test_01_write_b(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
         p1[1] = (3,4)
 
         self.assertEqual(list(p1), [1,(3,4),"3"])
 
-    def test_write_c(self):
+    def test_02_write_c(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
         p1[2] = [6]
 
         self.assertEqual(list(p1), [1,2.2,[6]])
 
-    def test_write_neg_index(self):
+    def test_03_write_neg_index(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
         p1[-2] = (3,)
 
         self.assertEqual(list(p1), [1,(3,),"3"])
 
-    def test_write_out_of_range_a(self):
+    def test_04_write_out_of_range_a(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
 
         with self.assertRaises(IndexError):
             p1[3] = True
 
-    def test_write_out_of_range_b(self):
+    def test_05_write_out_of_range_b(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
 
         with self.assertRaises(IndexError):
             p1[100] = True
 
-    def test_write_out_of_range_neg_a(self):
+    def test_06_write_out_of_range_neg_a(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
 
         with self.assertRaises(IndexError):
             p1[-4] = True
 
-    def test_write_out_of_range_neg_b(self):
+    def test_07_write_out_of_range_neg_b(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
 
         with self.assertRaises(IndexError):
             p1[-100] = True
 
-    def test_write_non_int_index_a(self):
+    def test_08_write_non_int_index_a(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
 
         with self.assertRaises((TypeError, AssertionError)):
             p1[1.0] = True
 
-    def test_write_non_int_index_b(self):
+    def test_09_write_non_int_index_b(self):
         p1 = parray.PArray([1,2.2,"3"])
         self.assertEqual(len(p1), 3)
 
@@ -239,10 +240,10 @@ class TestBracketOpWrite(unittest.TestCase):
             p1["abc"] = True
 
 
-class TestLenBool(unittest.TestCase):
+class Test03LenBool(unittest.TestCase):
     """Test PArray methods __len__, __bool__."""
 
-    def test_len_bool_a(self):
+    def test_00_len_bool_a(self):
         p1 = parray.PArray()
 
         self.assertIsInstance(p1.__len__(), int)
@@ -250,7 +251,7 @@ class TestLenBool(unittest.TestCase):
         self.assertIsInstance(p1.__bool__(), bool)
         self.assertEqual(p1.__bool__(), False)
 
-    def test_len_bool_b(self):
+    def test_01_len_bool_b(self):
         p1 = parray.PArray([])
 
         self.assertIsInstance(p1.__len__(), int)
@@ -258,7 +259,7 @@ class TestLenBool(unittest.TestCase):
         self.assertIsInstance(p1.__bool__(), bool)
         self.assertEqual(p1.__bool__(), False)
 
-    def test_len_bool_c(self):
+    def test_02_len_bool_c(self):
         p1 = parray.PArray([1])
 
         self.assertIsInstance(p1.__len__(), int)
@@ -266,7 +267,7 @@ class TestLenBool(unittest.TestCase):
         self.assertIsInstance(p1.__bool__(), bool)
         self.assertEqual(p1.__bool__(), True)
 
-    def test_len_bool_d(self):
+    def test_03_len_bool_d(self):
         bignum = 10_000
         p1 = parray.PArray(range(10_000))
 
@@ -276,28 +277,28 @@ class TestLenBool(unittest.TestCase):
         self.assertEqual(p1.__bool__(), True)
 
 
-class TestStr(unittest.TestCase):
+class Test04Str(unittest.TestCase):
     """Test PArray method __str__."""
 
-    def test_str_a(self):
+    def test_00_str_a(self):
         p1 = parray.PArray()
 
         self.assertIsInstance(p1.__str__(), str)
         self.assertEqual(p1.__str__(), "[]")
 
-    def test_str_b(self):
+    def test_01_str_b(self):
         p1 = parray.PArray(["a"])
 
         self.assertIsInstance(p1.__str__(), str)
         self.assertEqual(p1.__str__(), "['a']")
 
-    def test_str_c(self):
+    def test_02_str_c(self):
         p1 = parray.PArray(["a","b",3])
 
         self.assertIsInstance(p1.__str__(), str)
         self.assertEqual(p1.__str__(), "['a', 'b', 3]")
 
-    def test_str_d(self):
+    def test_03_str_d(self):
         bignum = 10_000
         p1 = parray.PArray(["a"]*bignum)
 
@@ -306,28 +307,28 @@ class TestStr(unittest.TestCase):
                          "[" + "'a', " * (bignum-1) + "'a']")
 
 
-class TestRepr(unittest.TestCase):
+class Test05Repr(unittest.TestCase):
     """Test PArray method __repr__."""
 
-    def test_repr_a(self):
+    def test_00_repr_a(self):
         p1 = parray.PArray()
 
         self.assertIsInstance(p1.__repr__(), str)
         self.assertEqual(p1.__repr__(), "PArray([])")
 
-    def test_repr_b(self):
+    def test_01_repr_b(self):
         p1 = parray.PArray(["a"])
 
         self.assertIsInstance(p1.__repr__(), str)
         self.assertEqual(p1.__repr__(), "PArray(['a'])")
 
-    def test_repr_c(self):
+    def test_02_repr_c(self):
         p1 = parray.PArray(["a","b",3])
 
         self.assertIsInstance(p1.__repr__(), str)
         self.assertEqual(p1.__repr__(), "PArray(['a', 'b', 3])")
 
-    def test_repr_d(self):
+    def test_03_repr_d(self):
         bignum = 10_000
         p1 = parray.PArray(["a"]*bignum)
 
@@ -336,180 +337,180 @@ class TestRepr(unittest.TestCase):
                          "PArray([" + "'a', " * (bignum-1) + "'a'])")
 
 
-class TestSort(unittest.TestCase):
+class Test06Sort(unittest.TestCase):
     """Test PArray method sort."""
 
-    def test_sort_empty_a(self):
+    def test_00_sort_empty_a(self):
         p1 = parray.PArray()
         p1.sort()
 
         self.assertEqual(list(p1), [])
 
-    def test_sort_empty_b(self):
+    def test_01_sort_empty_b(self):
         p1 = parray.PArray()
         p1.sort(reverse=False)
 
         self.assertEqual(list(p1), [])
 
-    def test_sort_empty_c(self):
+    def test_02_sort_empty_c(self):
         p1 = parray.PArray()
         p1.sort(reverse=True)
 
         self.assertEqual(list(p1), [])
 
-    def test_sort_empty_d(self):
+    def test_03_sort_empty_d(self):
         p1 = parray.PArray()
         p1.sort(key=str)
 
         self.assertEqual(list(p1), [])
 
-    def test_sort_empty_e(self):
+    def test_04_sort_empty_e(self):
         p1 = parray.PArray()
         p1.sort(reverse=False, key=str)
 
         self.assertEqual(list(p1), [])
 
-    def test_sort_empty_f(self):
+    def test_05_sort_empty_f(self):
         p1 = parray.PArray()
         p1.sort(reverse=True, key=str)
 
         self.assertEqual(list(p1), [])
 
-    def test_sort_len_1_a(self):
+    def test_06_sort_len_1_a(self):
         p1 = parray.PArray([12])
         p1.sort()
 
         self.assertEqual(list(p1), [12])
 
-    def test_sort_len_1_b(self):
+    def test_07_sort_len_1_b(self):
         p1 = parray.PArray([12])
         p1.sort(reverse=False)
 
         self.assertEqual(list(p1), [12])
 
-    def test_sort_len_1_c(self):
+    def test_08_sort_len_1_c(self):
         p1 = parray.PArray([12])
         p1.sort(reverse=True)
 
         self.assertEqual(list(p1), [12])
 
-    def test_sort_len_1_d(self):
+    def test_09_sort_len_1_d(self):
         p1 = parray.PArray([12])
         p1.sort(key=str)
 
         self.assertEqual(list(p1), [12])
 
-    def test_sort_len_1_e(self):
+    def test_10_sort_len_1_e(self):
         p1 = parray.PArray([12])
         p1.sort(reverse=False, key=str)
 
         self.assertEqual(list(p1), [12])
 
-    def test_sort_len_1_f(self):
+    def test_11_sort_len_1_f(self):
         p1 = parray.PArray([12])
         p1.sort(reverse=True, key=str)
 
         self.assertEqual(list(p1), [12])
 
-    def test_sort_len_2_a(self):
+    def test_12_sort_len_2_a(self):
         p1 = parray.PArray([12,100])
         p1.sort()
 
         self.assertEqual(list(p1), [12, 100])
 
-    def test_sort_len_2_b(self):
+    def test_13_sort_len_2_b(self):
         p1 = parray.PArray([12,100])
         p1.sort(reverse=False)
 
         self.assertEqual(list(p1), [12, 100])
 
-    def test_sort_len_2_c(self):
+    def test_14_sort_len_2_c(self):
         p1 = parray.PArray([12,100])
         p1.sort(reverse=True)
 
         self.assertEqual(list(p1), [100, 12])
 
-    def test_sort_len_2_d(self):
+    def test_15_sort_len_2_d(self):
         p1 = parray.PArray([12,100])
         p1.sort(key=str)
 
         self.assertEqual(list(p1), [100, 12])
 
-    def test_sort_len_2_e(self):
+    def test_16_sort_len_2_e(self):
         p1 = parray.PArray([12,100])
         p1.sort(reverse=False, key=str)
 
         self.assertEqual(list(p1), [100, 12])
 
-    def test_sort_len_2_f(self):
+    def test_17_sort_len_2_f(self):
         p1 = parray.PArray([12,100])
         p1.sort(reverse=True, key=str)
 
         self.assertEqual(list(p1), [12, 100])
 
-    def test_sort_len_5_a(self):
+    def test_18_sort_len_5_a(self):
         p1 = parray.PArray([100, 21,  1, 200, 12])
         p1.sort()
 
         self.assertEqual(list(p1), [1, 12, 21, 100, 200])
 
-    def test_sort_len_5_b(self):
+    def test_19_sort_len_5_b(self):
         p1 = parray.PArray([100, 21,  1, 200, 12])
         p1.sort(reverse=False)
 
         self.assertEqual(list(p1), [1, 12, 21, 100, 200])
 
-    def test_sort_len_5_c(self):
+    def test_20_sort_len_5_c(self):
         p1 = parray.PArray([100, 21,  1, 200, 12])
         p1.sort(reverse=True)
 
         self.assertEqual(list(p1), [200, 100, 21, 12, 1])
 
-    def test_sort_len_5_d(self):
+    def test_21_sort_len_5_d(self):
         p1 = parray.PArray([100, 21,  1, 200, 12])
         p1.sort(key=str)
 
         self.assertEqual(list(p1), [1, 100, 12, 200, 21])
 
-    def test_sort_len_5_e(self):
+    def test_22_sort_len_5_e(self):
         p1 = parray.PArray([100, 21,  1, 200, 12])
         p1.sort(reverse=False, key=str)
 
         self.assertEqual(list(p1), [1, 100, 12, 200, 21])
 
-    def test_sort_len_5_f(self):
+    def test_23_sort_len_5_f(self):
         p1 = parray.PArray([100, 21,  1, 200, 12])
         p1.sort(reverse=True, key=str)
 
         self.assertEqual(list(p1), [21, 200, 12, 100, 1])
 
 
-class TestIndex(unittest.TestCase):
+class Test07Index(unittest.TestCase):
     """Test PArray method index."""
 
-    def test_empty(self):
+    def test_00_empty(self):
         p1 = parray.PArray()
         with self.assertRaises(ValueError):
             result = p1.index(1)
 
-    def test_len_1_present(self):
+    def test_01_len_1_present(self):
         p1 = parray.PArray([2])
         result = p1.index(2)
 
         self.assertEqual(result, 0)
 
-    def test_len_1_not_present(self):
+    def test_02_len_1_not_present(self):
         p1 = parray.PArray([2])
         with self.assertRaises(ValueError):
             result = p1.index(1)
 
-    def test_len_100_present(self):
+    def test_03_len_100_present(self):
         p1 = parray.PArray(range(1,201,2))
         result = p1.index(83)
 
         self.assertEqual(result, 41)
 
-    def test_len_100_not_present(self):
+    def test_04_len_100_not_present(self):
         p1 = parray.PArray(range(1,201,2))
         with self.assertRaises(ValueError):
             result = p1.index(84)
@@ -518,10 +519,10 @@ class TestIndex(unittest.TestCase):
 # ***** Tests that do not pass in "HAND-OFF" version of parray.py *****
 
 
-class TestAdd(unittest.TestCase):
+class Test08Add(unittest.TestCase):
     """Test PArray binary + operator (method __add__)."""
 
-    def test_add_short(self):
+    def test_00_add_short(self):
         it1 = range(1,4)
         it2 = range(5)
         p1 = parray.PArray(it1)
@@ -530,7 +531,7 @@ class TestAdd(unittest.TestCase):
         self.assertEqual(list(p1), list(it1))
         self.assertEqual(list(p2), list(it1) + list(it2))
 
-    def test_add_long(self):
+    def test_01_add_long(self):
         bignum = 10_000
         it1 = range(bignum)
         it2 = range(3,2*bignum,2)
@@ -540,7 +541,7 @@ class TestAdd(unittest.TestCase):
         self.assertEqual(list(p1), list(it1))
         self.assertEqual(list(p2), list(it1) + list(it2))
 
-    def test_add_1st_empty(self):
+    def test_02_add_1st_empty(self):
         it1 = []
         it2 = range(7)
         p1 = parray.PArray(it1)
@@ -549,7 +550,7 @@ class TestAdd(unittest.TestCase):
         self.assertEqual(list(p1), list(it1))
         self.assertEqual(list(p2), list(it1) + list(it2))
 
-    def test_add_2nd_empty(self):
+    def test_03_add_2nd_empty(self):
         it1 = range(3,6)
         it2 = []
         p1 = parray.PArray(it1)
@@ -558,7 +559,7 @@ class TestAdd(unittest.TestCase):
         self.assertEqual(list(p1), list(it1))
         self.assertEqual(list(p2), list(it1) + list(it2))
 
-    def test_add_both_empty(self):
+    def test_04_add_both_empty(self):
         it1 = []
         it2 = []
         p1 = parray.PArray(it1)
@@ -568,10 +569,10 @@ class TestAdd(unittest.TestCase):
         self.assertEqual(list(p2), list(it1) + list(it2))
 
 
-class TestIAdd(unittest.TestCase):
+class Test09IAdd(unittest.TestCase):
     """Test PArray += operator (method __iadd__)."""
 
-    def test_iadd_short(self):
+    def test_00_iadd_short(self):
         it1 = range(1,4)
         it2 = range(5)
         p1 = parray.PArray(it1)
@@ -579,7 +580,7 @@ class TestIAdd(unittest.TestCase):
 
         self.assertEqual(list(p1), list(it1) + list(it2))
 
-    def test_iadd_long(self):
+    def test_01_iadd_long(self):
         bignum = 10_000
         it1 = range(bignum)
         it2 = range(3,2*bignum,2)
@@ -588,7 +589,7 @@ class TestIAdd(unittest.TestCase):
 
         self.assertEqual(list(p1), list(it1) + list(it2))
 
-    def test_iadd_1st_empty(self):
+    def test_02_iadd_1st_empty(self):
         it1 = []
         it2 = range(7)
         p1 = parray.PArray(it1)
@@ -596,7 +597,7 @@ class TestIAdd(unittest.TestCase):
 
         self.assertEqual(list(p1), list(it1) + list(it2))
 
-    def test_iadd_2nd_empty(self):
+    def test_03_iadd_2nd_empty(self):
         it1 = range(3,6)
         it2 = []
         p1 = parray.PArray(it1)
@@ -604,7 +605,7 @@ class TestIAdd(unittest.TestCase):
 
         self.assertEqual(list(p1), list(it1) + list(it2))
 
-    def test_iadd_both_empty(self):
+    def test_04_iadd_both_empty(self):
         it1 = []
         it2 = []
         p1 = parray.PArray(it1)
@@ -613,10 +614,10 @@ class TestIAdd(unittest.TestCase):
         self.assertEqual(list(p1), list(it1) + list(it2))
 
 
-class TestCopy(unittest.TestCase):
+class Test10Copy(unittest.TestCase):
     """Test PArray method copy."""
 
-    def test_copy_short(self):
+    def test_00_copy_short(self):
         p1 = parray.PArray([1,2,3])
         p2 = p1.copy()
 
@@ -629,7 +630,7 @@ class TestCopy(unittest.TestCase):
         self.assertEqual(list(p1), [11,2,3])
         self.assertEqual(list(p2), [1,22,3])
 
-    def test_copy_long(self):
+    def test_01_copy_long(self):
         bignum = 10_000
         p1 = parray.PArray(range(bignum))
         p2 = p1.copy()
@@ -644,31 +645,31 @@ class TestCopy(unittest.TestCase):
         self.assertEqual(list(p2), [0,22] + list(range(2, bignum)))
 
 
-class TestResize(unittest.TestCase):
+class Test11Resize(unittest.TestCase):
     """Test PArray method resize."""
 
-    def test_resize_simple_smaller(self):
+    def test_00_resize_simple_smaller(self):
         p1 = parray.PArray(range(100))
         p1.resize(50)
 
         self.assertEqual(len(p1), 50)
         self.assertEqual(list(p1), list(range(50)))
 
-    def test_resize_simple_larger(self):
+    def test_01_resize_simple_larger(self):
         p1 = parray.PArray(range(100))
         p1.resize(2000)
 
         self.assertEqual(len(p1), 2000)
         self.assertEqual(list(p1)[:100], list(range(100)))
 
-    def test_resize_simple_same(self):
+    def test_02_resize_simple_same(self):
         p1 = parray.PArray(range(100))
         p1.resize(100)
 
         self.assertEqual(len(p1), 100)
         self.assertEqual(list(p1), list(range(100)))
 
-    def test_resize_alloc(self):
+    def test_03_resize_alloc(self):
         bignum = 10_000
         global last_alloc
         last_alloc = None
@@ -711,73 +712,73 @@ class TestResize(unittest.TestCase):
         self.assertIs(last_alloc, None)
 
 
-class TestInsert(unittest.TestCase):
+class Test12Insert(unittest.TestCase):
     """Test PArray method insert."""
 
-    def test_insert_empty(self):
+    def test_00_insert_empty(self):
         p1 = parray.PArray()
         p1.insert(0, 9)
 
         self.assertEqual(len(p1), 1)
         self.assertEqual(list(p1), [9])
 
-    def test_insert_a(self):
+    def test_01_insert_a(self):
         p1 = parray.PArray([1,2,3,4])
         p1.insert(0, 9)
 
         self.assertEqual(len(p1), 5)
         self.assertEqual(list(p1), [9,1,2,3,4])
 
-    def test_insert_b(self):
+    def test_02_insert_b(self):
         p1 = parray.PArray([1,2,3,4])
         p1.insert(1, 9)
 
         self.assertEqual(len(p1), 5)
         self.assertEqual(list(p1), [1,9,2,3,4])
 
-    def test_insert_c(self):
+    def test_03_insert_c(self):
         p1 = parray.PArray([1,2,3,4])
         p1.insert(2, 9)
 
         self.assertEqual(len(p1), 5)
         self.assertEqual(list(p1), [1,2,9,3,4])
 
-    def test_insert_d(self):
+    def test_04_insert_d(self):
         p1 = parray.PArray([1,2,3,4])
         p1.insert(3, 9)
 
         self.assertEqual(len(p1), 5)
         self.assertEqual(list(p1), [1,2,3,9,4])
 
-    def test_insert_e(self):
+    def test_05_insert_e(self):
         p1 = parray.PArray([1,2,3,4])
         p1.insert(4, 9)
 
         self.assertEqual(len(p1), 5)
         self.assertEqual(list(p1), [1,2,3,4,9])
 
-    def test_insert_neg_index(self):
+    def test_06_insert_neg_index(self):
         p1 = parray.PArray([1,2,3,4])
         p1.insert(-2, 9)
 
         self.assertEqual(len(p1), 5)
         self.assertEqual(list(p1), [1,2,9,3,4])
 
-    def test_insert_lo_index(self):
+    def test_07_insert_lo_index(self):
         p1 = parray.PArray([1,2,3,4])
         p1.insert(-100, 9)
 
         self.assertEqual(len(p1), 5)
         self.assertEqual(list(p1), [9,1,2,3,4])
 
-    def test_insert_hi_index(self):
+    def test_08_insert_hi_index(self):
         p1 = parray.PArray([1,2,3,4])
         p1.insert(100, 9)
 
         self.assertEqual(len(p1), 5)
         self.assertEqual(list(p1), [1,2,3,4,9])
 
-    def test_insert_alloc(self):
+    def test_09_insert_alloc(self):
         global last_alloc
         last_alloc = None
         p1 = parray.PArray([1,2], alloc=Alloc2)
@@ -796,10 +797,10 @@ class TestInsert(unittest.TestCase):
         self.assertTrue(cap2 > cap1 and cap2 >= cap1 * 2)
 
 
-class TestDel(unittest.TestCase):
+class Test13Del(unittest.TestCase):
     """Test del on PArray item (method __delitem__)."""
 
-    def test_del_short_a(self):
+    def test_00_del_short_a(self):
         global last_alloc
         p1 = parray.PArray([1,2,3], alloc=Alloc2)
         last_alloc = None
@@ -808,7 +809,7 @@ class TestDel(unittest.TestCase):
 
         self.assertEqual(list(p1), [2,3])
 
-    def test_del_short_b(self):
+    def test_01_del_short_b(self):
         global last_alloc
         p1 = parray.PArray([1,2,3], alloc=Alloc2)
         last_alloc = None
@@ -817,7 +818,7 @@ class TestDel(unittest.TestCase):
 
         self.assertEqual(list(p1), [1,3])
 
-    def test_del_short_c(self):
+    def test_02_del_short_c(self):
         global last_alloc
         p1 = parray.PArray([1,2,3], alloc=Alloc2)
         last_alloc = None
@@ -826,7 +827,7 @@ class TestDel(unittest.TestCase):
 
         self.assertEqual(list(p1), [1,2])
 
-    def test_del_short_negative(self):
+    def test_03_del_short_negative(self):
         global last_alloc
         p1 = parray.PArray([1,2,3], alloc=Alloc2)
         last_alloc = None
@@ -835,7 +836,7 @@ class TestDel(unittest.TestCase):
 
         self.assertEqual(list(p1), [1,3])
 
-    def test_del_long_a(self):
+    def test_04_del_long_a(self):
         global last_alloc
         bignum = 10_000
         p1 = parray.PArray(range(0,bignum), alloc=Alloc2)
@@ -846,26 +847,26 @@ class TestDel(unittest.TestCase):
         self.assertEqual(list(p1),
             list(range(0,bignum//2)) + list(range(bignum//2+1,bignum)))
 
-    def test_del_out_of_range_a(self):
+    def test_05_del_out_of_range_a(self):
         p1 = parray.PArray()
         with self.assertRaises(IndexError):
             del p1[0]
 
-    def test_del_out_of_range_b(self):
+    def test_06_del_out_of_range_b(self):
         p1 = parray.PArray([1,2,3])
         with self.assertRaises(IndexError):
             del p1[3]
 
-    def test_del_out_of_range_c(self):
+    def test_07_del_out_of_range_c(self):
         p1 = parray.PArray([1,2,3])
         with self.assertRaises(IndexError):
             del p1[-4]
 
 
-class TestPop(unittest.TestCase):
+class Test14Pop(unittest.TestCase):
     """Test PArray method pop."""
 
-    def test_pop_no_arg(self):
+    def test_00_pop_no_arg(self):
         global last_alloc
         p1 = parray.PArray([1,2,3], alloc=Alloc2)
         last_alloc = None
@@ -875,7 +876,7 @@ class TestPop(unittest.TestCase):
         self.assertEqual(popped, 3)
         self.assertEqual(list(p1), [1,2])
 
-    def test_pop_short_a(self):
+    def test_01_pop_short_a(self):
         global last_alloc
         p1 = parray.PArray([1,2,3], alloc=Alloc2)
         last_alloc = None
@@ -885,7 +886,7 @@ class TestPop(unittest.TestCase):
         self.assertEqual(popped, 1)
         self.assertEqual(list(p1), [2,3])
 
-    def test_pop_short_b(self):
+    def test_02_pop_short_b(self):
         global last_alloc
         p1 = parray.PArray([1,2,3], alloc=Alloc2)
         last_alloc = None
@@ -895,7 +896,7 @@ class TestPop(unittest.TestCase):
         self.assertEqual(popped, 2)
         self.assertEqual(list(p1), [1,3])
 
-    def test_pop_short_c(self):
+    def test_03_pop_short_c(self):
         global last_alloc
         p1 = parray.PArray([1,2,3], alloc=Alloc2)
         last_alloc = None
@@ -905,7 +906,7 @@ class TestPop(unittest.TestCase):
         self.assertEqual(popped, 3)
         self.assertEqual(list(p1), [1,2])
 
-    def test_pop_short_negative(self):
+    def test_04_pop_short_negative(self):
         global last_alloc
         p1 = parray.PArray([1,2,3], alloc=Alloc2)
         last_alloc = None
@@ -915,7 +916,7 @@ class TestPop(unittest.TestCase):
         self.assertEqual(popped, 2)
         self.assertEqual(list(p1), [1,3])
 
-    def test_pop_long_a(self):
+    def test_05_pop_long_a(self):
         global last_alloc
         bignum = 10_000
         p1 = parray.PArray(range(0,bignum), alloc=Alloc2)
@@ -927,33 +928,33 @@ class TestPop(unittest.TestCase):
         self.assertEqual(list(p1),
             list(range(0,bignum//2)) + list(range(bignum//2+1,bignum)))
 
-    def test_pop_out_of_range_a(self):
+    def test_06_pop_out_of_range_a(self):
         p1 = parray.PArray()
         with self.assertRaises(IndexError):
             _ = p1.pop(0)
 
-    def test_pop_out_of_range_b(self):
+    def test_07_pop_out_of_range_b(self):
         p1 = parray.PArray([1,2,3])
         with self.assertRaises(IndexError):
             _ = p1.pop(3)
 
-    def test_pop_out_of_range_c(self):
+    def test_08_pop_out_of_range_c(self):
         p1 = parray.PArray([1,2,3])
         with self.assertRaises(IndexError):
             _ = p1.pop(-4)
 
 
-class TestAppend(unittest.TestCase):
+class Test15Append(unittest.TestCase):
     """Test PArray method append."""
 
-    def test_append_a(self):
+    def test_00_append_a(self):
         p1 = parray.PArray()
         p1.append(7)
 
         self.assertEqual(len(p1), 1)
         self.assertEqual(list(p1), [7])
 
-    def test_append_b(self):
+    def test_01_append_b(self):
         p1 = parray.PArray([1,2,3])
         p1.append(8)
 
@@ -961,10 +962,10 @@ class TestAppend(unittest.TestCase):
         self.assertEqual(list(p1), [1,2,3,8])
 
 
-class TestExtend(unittest.TestCase):
+class Test16Extend(unittest.TestCase):
     """Test PArray method extend."""
 
-    def test_extend_short(self):
+    def test_00_extend_short(self):
         it1 = range(1,4)
         it2 = range(5)
         p1 = parray.PArray(it1)
@@ -972,7 +973,7 @@ class TestExtend(unittest.TestCase):
 
         self.assertEqual(list(p1), list(it1) + list(it2))
 
-    def test_extend_long(self):
+    def test_01_extend_long(self):
         bignum = 10_000
         it1 = range(bignum)
         it2 = range(3,2*bignum,2)
@@ -981,7 +982,7 @@ class TestExtend(unittest.TestCase):
 
         self.assertEqual(list(p1), list(it1) + list(it2))
 
-    def test_extend_1st_empty(self):
+    def test_02_extend_1st_empty(self):
         it1 = []
         it2 = range(7)
         p1 = parray.PArray(it1)
@@ -989,7 +990,7 @@ class TestExtend(unittest.TestCase):
 
         self.assertEqual(list(p1), list(it1) + list(it2))
 
-    def test_extend_2nd_empty(self):
+    def test_03_extend_2nd_empty(self):
         it1 = range(3,6)
         it2 = []
         p1 = parray.PArray(it1)
@@ -997,7 +998,7 @@ class TestExtend(unittest.TestCase):
 
         self.assertEqual(list(p1), list(it1) + list(it2))
 
-    def test_extend_both_empty(self):
+    def test_04_extend_both_empty(self):
         it1 = []
         it2 = []
         p1 = parray.PArray(it1)
