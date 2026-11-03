@@ -24,25 +24,25 @@ import unittest   # For .TestCase, .main
 # **********************************************************************
 
 
-class TestReturnType(unittest.TestCase):
+class Test00ReturnType(unittest.TestCase):
 
-    def test_hdt_count_return(self):
+    def test00_hdt_count_return(self):
         val = hdt_count.hdt_count(4,3, 2,0, 3,2)
 
         self.assertIsInstance(val, int)
 
 
-class TestBoards_nx1_1xn(unittest.TestCase):
+class Test01Boards_nx1_1xn(unittest.TestCase):
 
-    def test_all_2x1(self):
+    def test00_all_2x1(self):
         self.assertEqual(hdt_count.hdt_count(2,1, 0,0, 1,0), 1)
         self.assertEqual(hdt_count.hdt_count(2,1, 1,0, 0,0), 1)
 
-    def test_all_1x2(self):
+    def test01_all_1x2(self):
         self.assertEqual(hdt_count.hdt_count(1,2, 0,0, 0,1), 1)
         self.assertEqual(hdt_count.hdt_count(1,2, 0,1, 0,0), 1)
 
-    def test_all_3x1(self):
+    def test02_all_3x1(self):
         self.assertEqual(hdt_count.hdt_count(3,1, 0,0, 1,0), 0)
         self.assertEqual(hdt_count.hdt_count(3,1, 0,0, 2,0), 0)
         self.assertEqual(hdt_count.hdt_count(3,1, 1,0, 0,0), 0)
@@ -50,7 +50,7 @@ class TestBoards_nx1_1xn(unittest.TestCase):
         self.assertEqual(hdt_count.hdt_count(3,1, 2,0, 0,0), 0)
         self.assertEqual(hdt_count.hdt_count(3,1, 2,0, 1,0), 0)
 
-    def test_all_1x3(self):
+    def test03_all_1x3(self):
         self.assertEqual(hdt_count.hdt_count(1,3, 0,0, 0,1), 0)
         self.assertEqual(hdt_count.hdt_count(1,3, 0,0, 0,2), 0)
         self.assertEqual(hdt_count.hdt_count(1,3, 0,1, 0,0), 0)
@@ -58,7 +58,7 @@ class TestBoards_nx1_1xn(unittest.TestCase):
         self.assertEqual(hdt_count.hdt_count(1,3, 0,2, 0,0), 0)
         self.assertEqual(hdt_count.hdt_count(1,3, 0,2, 0,1), 0)
 
-    def test_all_4x1(self):
+    def test04_all_4x1(self):
         self.assertEqual(hdt_count.hdt_count(4,1, 0,0, 1,0), 1)
         self.assertEqual(hdt_count.hdt_count(4,1, 0,0, 2,0), 0)
         self.assertEqual(hdt_count.hdt_count(4,1, 0,0, 3,0), 1)
@@ -72,7 +72,7 @@ class TestBoards_nx1_1xn(unittest.TestCase):
         self.assertEqual(hdt_count.hdt_count(4,1, 3,0, 1,0), 0)
         self.assertEqual(hdt_count.hdt_count(4,1, 3,0, 2,0), 1)
 
-    def test_all_1x4(self):
+    def test05_all_1x4(self):
         self.assertEqual(hdt_count.hdt_count(1,4, 0,0, 0,1), 1)
         self.assertEqual(hdt_count.hdt_count(1,4, 0,0, 0,2), 0)
         self.assertEqual(hdt_count.hdt_count(1,4, 0,0, 0,3), 1)
@@ -86,7 +86,7 @@ class TestBoards_nx1_1xn(unittest.TestCase):
         self.assertEqual(hdt_count.hdt_count(1,4, 0,3, 0,1), 0)
         self.assertEqual(hdt_count.hdt_count(1,4, 0,3, 0,2), 1)
 
-    def test_various_nx1_n_gt_4(self):
+    def test06_various_nx1_n_gt_4(self):
         self.assertEqual(hdt_count.hdt_count(10,1,  0,0,  9,0), 1)
         self.assertEqual(hdt_count.hdt_count(50,1,  1,0,  0,0), 1)
         self.assertEqual(hdt_count.hdt_count(60,1,  1,0,  2,0), 0)
@@ -94,7 +94,7 @@ class TestBoards_nx1_1xn(unittest.TestCase):
         self.assertEqual(hdt_count.hdt_count(98,1, 97,0,  0,0), 1)
         self.assertEqual(hdt_count.hdt_count(99,1, 98,0, 97,0), 0)
 
-    def test_various_1xn_n_gt_4(self):
+    def test07_various_1xn_n_gt_4(self):
         self.assertEqual(hdt_count.hdt_count(1,12, 0,11, 0, 0), 1)
         self.assertEqual(hdt_count.hdt_count(1,48, 0, 0, 0, 1), 1)
         self.assertEqual(hdt_count.hdt_count(1,62, 0,38, 0,37), 0)
@@ -103,9 +103,9 @@ class TestBoards_nx1_1xn(unittest.TestCase):
         self.assertEqual(hdt_count.hdt_count(1,99, 0, 0, 0,98), 0)
 
 
-class TestBoards_Small(unittest.TestCase):
+class Test02Boards_Small(unittest.TestCase):
 
-    def test_various_small(self):
+    def test00_various_small(self):
         self.assertEqual(hdt_count.hdt_count(2,4, 1,0, 0,2),  1)
         self.assertEqual(hdt_count.hdt_count(5,2, 1,0, 3,1),  1)
         self.assertEqual(hdt_count.hdt_count(3,4, 2,0, 2,1),  7)
@@ -115,9 +115,9 @@ class TestBoards_Small(unittest.TestCase):
         self.assertEqual(hdt_count.hdt_count(3,7, 1,1, 1,2),  0)
 
 
-class TestBoards_FibonacciFun(unittest.TestCase):
+class Test03Boards_FibonacciFun(unittest.TestCase):
 
-    def test_fibonacci_results(self):
+    def test00_fibonacci_results(self):
         self.assertEqual(hdt_count.hdt_count( 1,2, 0,0, 0,1),    1)
         self.assertEqual(hdt_count.hdt_count( 2,2, 0,0, 0,1),    1)
         self.assertEqual(hdt_count.hdt_count( 3,2, 0,0, 0,1),    2)
@@ -137,9 +137,9 @@ class TestBoards_FibonacciFun(unittest.TestCase):
         self.assertEqual(hdt_count.hdt_count(17,2, 0,0, 0,1), 1597)
 
 
-class TestBoards_Larger(unittest.TestCase):
+class Test04Boards_Larger(unittest.TestCase):
 
-    def test_various_larger(self):
+    def test00_various_larger(self):
         self.assertEqual(hdt_count.hdt_count( 2,11, 0,4, 1,4),   65)
         self.assertEqual(hdt_count.hdt_count(12, 2, 7,0, 7,1),  105)
         self.assertEqual(hdt_count.hdt_count( 4, 7, 1,1, 3,4),   91)
@@ -151,9 +151,9 @@ class TestBoards_Larger(unittest.TestCase):
         self.assertEqual(hdt_count.hdt_count( 5, 8, 0,0, 1,0), 6533)
 
 
-class TestBoards_SlideExamples(unittest.TestCase):
+class Test05Boards_SlideExamples(unittest.TestCase):
 
-    def test_examples_from_slides(self):
+    def test00_examples_from_slides(self):
         self.assertEqual(hdt_count.hdt_count(4,3, 2,0, 3,2),    4)
         self.assertEqual(hdt_count.hdt_count(3,2, 2,1, 0,0),    1)
         self.assertEqual(hdt_count.hdt_count(4,1, 1,0, 3,0),    0)

@@ -24,39 +24,39 @@ import itertools  # For .count, .islice
 # **********************************************************************
 
 
-class TestFuncReturnTypes(unittest.TestCase):
+class Test00FuncReturnTypes(unittest.TestCase):
 
-    def test_init(self):
+    def test00_init(self):
         ob1 = lazyseq.LazySeq()
 
         self.assertIsInstance(ob1, lazyseq.LazySeq)
 
-    def test_add(self):
+    def test01_add(self):
         ob1 = lazyseq.LazySeq()
 
         self.assertIs(ob1.add(1), None)
 
-    def test_add_from_iterable(self):
+    def test02_add_from_iterable(self):
         ob1 = lazyseq.LazySeq()
 
         self.assertIs(ob1.add_from_iterable([]), None)
 
-    def test_add_from_iterable_now(self):
+    def test03_add_from_iterable_now(self):
         ob1 = lazyseq.LazySeq()
 
         self.assertIs(ob1.add_from_iterable_now([]), None)
 
-    def test_skip(self):
+    def test04_skip(self):
         ob1 = lazyseq.LazySeq()
 
         self.assertIs(ob1.skip(1), None)
 
-    def test_clear(self):
+    def test05_clear(self):
         ob1 = lazyseq.LazySeq()
 
         self.assertIs(ob1.clear(), None)
 
-    def test_iter(self):
+    def test06_iter(self):
         ob1 = lazyseq.LazySeq()
         it1 = ob1.__iter__()
         attr1 = getattr(it1, "__next__", None)
@@ -66,48 +66,48 @@ class TestFuncReturnTypes(unittest.TestCase):
         self.assertTrue(callable(attr2))
 
 
-class TestBasic(unittest.TestCase):
+class Test01Basic(unittest.TestCase):
 
-    def test_init_list_empty(self):
+    def test00_init_list_empty(self):
         arg = []
         ob1 = lazyseq.LazySeq(arg)
 
         self.assertEqual(list(ob1), arg)
 
-    def test_init_list_small(self):
+    def test01_init_list_small(self):
         arg = [2, True, "x"]
         ob1 = lazyseq.LazySeq(arg)
 
         self.assertEqual(list(ob1), arg)
 
-    def test_init_list_large(self):
+    def test02_init_list_large(self):
         arg = [5] * 10000000
         ob1 = lazyseq.LazySeq(arg)
 
         self.assertEqual(list(ob1), arg)
 
-    def test_init_range_empty(self):
+    def test03_init_range_empty(self):
         arg = range(0)
         ob1 = lazyseq.LazySeq(arg)
 
         self.assertEqual(list(ob1), list(arg))
 
-    def test_init_range_small(self):
+    def test04_init_range_small(self):
         arg = range(4)
         ob1 = lazyseq.LazySeq(arg)
 
         self.assertEqual(list(ob1), list(arg))
 
-    def test_init_range_large(self):
+    def test05_init_range_large(self):
         arg = range(10000000)
         ob1 = lazyseq.LazySeq(arg)
 
         self.assertEqual(list(ob1), list(arg))
 
 
-class TestAdd(unittest.TestCase):
+class Test02Add(unittest.TestCase):
 
-    def test_init_empty_add_1(self):
+    def test00_init_empty_add_1(self):
         arg = []
         to_add = "x"
         ob1 = lazyseq.LazySeq(arg)
@@ -115,7 +115,7 @@ class TestAdd(unittest.TestCase):
 
         self.assertEqual(list(ob1), arg + [to_add])
 
-    def test_init_small_add_1(self):
+    def test01_init_small_add_1(self):
         arg = [2, 8, 7]
         to_add = "x"
         ob1 = lazyseq.LazySeq(arg)
@@ -123,7 +123,7 @@ class TestAdd(unittest.TestCase):
 
         self.assertEqual(list(ob1), arg + [to_add])
 
-    def test_init_empty_add_multiple(self):
+    def test02_init_empty_add_multiple(self):
         arg = []
         to_add = "x"
         num_adds = 10
@@ -133,7 +133,7 @@ class TestAdd(unittest.TestCase):
 
         self.assertEqual(list(ob1), arg + [to_add]*num_adds)
 
-    def test_init_small_add_multiple(self):
+    def test03_init_small_add_multiple(self):
         arg = ["a", "b", "c"]
         to_add = "3"
         num_adds = 100
@@ -144,9 +144,9 @@ class TestAdd(unittest.TestCase):
         self.assertEqual(list(ob1), arg + [to_add]*num_adds)
 
 
-class TestAddFromIterable(unittest.TestCase):
+class Test03AddFromIterable(unittest.TestCase):
 
-    def test_init_empty_afi_list(self):
+    def test00_init_empty_afi_list(self):
         arg = []
         to_afi = [1, 8, 4]
         ob1 = lazyseq.LazySeq(arg)
@@ -154,7 +154,7 @@ class TestAddFromIterable(unittest.TestCase):
 
         self.assertEqual(list(ob1), arg + to_afi)
 
-    def test_init_small_afi_range(self):
+    def test01_init_small_afi_range(self):
         arg = [12, 9, 3]
         to_afi = range(2, 3000, 3)
         ob1 = lazyseq.LazySeq(arg)
@@ -162,7 +162,7 @@ class TestAddFromIterable(unittest.TestCase):
 
         self.assertEqual(list(ob1), arg + list(to_afi))
 
-    def test_init_small_afi_count(self):
+    def test02_init_small_afi_count(self):
         arg = [12, 9, 3]
         to_afi = itertools.count(15, 4)
         to_afi2 = itertools.count(15, 4)
@@ -175,9 +175,9 @@ class TestAddFromIterable(unittest.TestCase):
             list(itertools.islice(itertools.chain(arg, to_afi2), sz)))
 
 
-class TestAddFromIterableNow(unittest.TestCase):
+class Test04AddFromIterableNow(unittest.TestCase):
 
-    def test_init_empty_afi_list(self):
+    def test00_init_empty_afi_list(self):
         arg = []
         to_afi = [1, 8, 4]
         ob1 = lazyseq.LazySeq(arg)
@@ -185,7 +185,7 @@ class TestAddFromIterableNow(unittest.TestCase):
 
         self.assertEqual(list(ob1), arg + to_afi)
 
-    def test_init_small_afi_range(self):
+    def test01_init_small_afi_range(self):
         arg = [12, 9, 3]
         to_afi = range(2, 3000, 3)
         ob1 = lazyseq.LazySeq(arg)
@@ -194,9 +194,9 @@ class TestAddFromIterableNow(unittest.TestCase):
         self.assertEqual(list(ob1), arg + list(to_afi))
 
 
-class TestSkip(unittest.TestCase):
+class Test05Skip(unittest.TestCase):
 
-    def test_1_skip(self):
+    def test00_1_skip(self):
         arg = [1,2,3,4,1,2,3,4]
         to_skip1 = 2
         ob1 = lazyseq.LazySeq(arg)
@@ -205,7 +205,7 @@ class TestSkip(unittest.TestCase):
 
         self.assertEqual(list(ob1), expected)
 
-    def test_multiple_skip(self):
+    def test01_multiple_skip(self):
         arg = [1,2,3,4,1,2,3,4]
         to_skip1 = 2
         to_skip2 = 4
@@ -218,7 +218,7 @@ class TestSkip(unittest.TestCase):
 
         self.assertEqual(list(ob1), expected)
 
-    def test_skip_add(self):
+    def test02_skip_add(self):
         arg = [1,2,3,4,1,2,3,4]
         to_skip1 = 2
         ob1 = lazyseq.LazySeq(arg)
@@ -229,9 +229,9 @@ class TestSkip(unittest.TestCase):
         self.assertEqual(list(ob1), expected)
 
 
-class TestClear(unittest.TestCase):
+class Test06Clear(unittest.TestCase):
 
-    def test_clear(self):
+    def test00_clear(self):
         arg = [1,2,3,4,1,2,3,4]
         ob1 = lazyseq.LazySeq(arg)
         ob1.clear()
@@ -239,7 +239,7 @@ class TestClear(unittest.TestCase):
 
         self.assertEqual(list(ob1), expected)
 
-    def test_clear_add(self):
+    def test01_clear_add(self):
         arg = [1,2,3,4,1,2,3,4]
         to_add = 5
         ob1 = lazyseq.LazySeq(arg)
@@ -250,9 +250,9 @@ class TestClear(unittest.TestCase):
         self.assertEqual(list(ob1), expected)
 
 
-class TestComplex(unittest.TestCase):
+class Test07Complex(unittest.TestCase):
 
-    def test_cplx1(self):
+    def test00_cplx1(self):
         ob1 = lazyseq.LazySeq([1,7,4,6,5,3,4,4,1])
         ob1.add(2)
         ob1.add_from_iterable(range(5))
@@ -263,7 +263,7 @@ class TestComplex(unittest.TestCase):
 
         self.assertEqual(list(ob1), expected)
 
-    def test_cplx2(self):
+    def test01_cplx2(self):
         ob1 = lazyseq.LazySeq(range(100))
         ob1.add(3)
         ob1.clear()
@@ -277,29 +277,29 @@ class TestComplex(unittest.TestCase):
         self.assertEqual(list(ob1), expected)
 
 
-class TestExceptions(unittest.TestCase):
+class Test08Exceptions(unittest.TestCase):
 
-    def test_pass_noniterable1(self):
+    def test00_pass_noniterable1(self):
         noniterable1 = 42
 
         with self.assertRaises(TypeError):
             ob1 = lazyseq.LazySeq(noniterable1)
 
-    def test_pass_noniterable2(self):
+    def test01_pass_noniterable2(self):
         noniterable1 = 42
         ob1 = lazyseq.LazySeq([1,2,3])
 
         with self.assertRaises(TypeError):
             ob1.add_from_iterable(noniterable1)
 
-    def test_pass_noniterable3(self):
+    def test02_pass_noniterable3(self):
         noniterable1 = 42
         ob1 = lazyseq.LazySeq([1,2,3])
 
         with self.assertRaises(TypeError):
             ob1.add_from_iterable_now(noniterable1)
 
-    def test_now_pass_raising_iterable1(self):
+    def test03_now_pass_raising_iterable1(self):
         exc1 = KeyboardInterrupt("abc")
         raising_iterable1 = IterRaise(exc1)
         ob1 = lazyseq.LazySeq([1,2,3])
@@ -307,7 +307,7 @@ class TestExceptions(unittest.TestCase):
         with self.assertRaises(KeyboardInterrupt):
             ob1.add_from_iterable_now(raising_iterable1)
 
-    def test_now_pass_raising_iterable2(self):
+    def test04_now_pass_raising_iterable2(self):
         exc1 = AssertionError("abc")
         raising_iterable1 = IterRaise(exc1)
         ob1 = lazyseq.LazySeq([1,2,3])
@@ -315,7 +315,7 @@ class TestExceptions(unittest.TestCase):
         with self.assertRaises(AssertionError):
             ob1.add_from_iterable_now(raising_iterable1)
 
-    def test_now_pass_raising_iterable3(self):
+    def test05_now_pass_raising_iterable3(self):
         exc1 = ValueError("abc")
         raising_iterable1 = IterRaise(exc1)
         ob1 = lazyseq.LazySeq([1,2,3])
@@ -324,9 +324,9 @@ class TestExceptions(unittest.TestCase):
             ob1.add_from_iterable_now(raising_iterable1)
 
 
-class TestIterateTwice(unittest.TestCase):
+class Test09IterateTwice(unittest.TestCase):
 
-    def test_cplx1(self):
+    def test00_cplx1(self):
         ob1 = lazyseq.LazySeq([1,7])
         ob1.clear()
         ob1.add(2)

@@ -24,23 +24,23 @@ import itertools  # For .islice
 # **********************************************************************
 
 
-class TestLLIter(unittest.TestCase):
+class Test00LLIter(unittest.TestCase):
 
-    def test_empty(self):
+    def test00_empty(self):
         the_list = []
         the_ll = make_ll(the_list)
         result = list(da3.ll_iter(the_ll))
 
         self.assertEqual(result, the_list)
 
-    def test_small_list(self):
+    def test01_small_list(self):
         the_list = [2, 18, 7]
         the_ll = make_ll(the_list)
         result = list(da3.ll_iter(the_ll))
 
         self.assertEqual(result, the_list)
 
-    def test_small_list_details(self):
+    def test02_small_list_details(self):
         the_list = [1, 5, 4]
         the_iterable = da3.ll_iter(make_ll(the_list))
         the_iter = iter(the_iterable)
@@ -54,7 +54,7 @@ class TestLLIter(unittest.TestCase):
         with self.assertRaises(StopIteration):
             v = next(the_iter)
 
-    def test_big_list(self):
+    def test03_big_list(self):
         big_num = 1_000_000
         the_list = [9] + [5]*big_num + [2] + [4]*big_num + [7]
         the_ll = make_ll(the_list)
@@ -62,7 +62,7 @@ class TestLLIter(unittest.TestCase):
 
         self.assertEqual(result, the_list)
 
-    def test_cycle_list(self):
+    def test04_cycle_list(self):
         import llnode
 
         the_list = [7, 2]
@@ -73,13 +73,13 @@ class TestLLIter(unittest.TestCase):
 
         self.assertEqual(result, the_list*dups)
 
-    def test_raise1(self):
+    def test05_raise1(self):
         the_bad_ll = 5
 
         with self.assertRaises(ValueError):
             result = list(da3.ll_iter(the_bad_ll))
 
-    def test_raise2(self):
+    def test06_raise2(self):
         import llnode
 
         the_bad_ll = llnode._LLNode(1, 2)
@@ -88,9 +88,9 @@ class TestLLIter(unittest.TestCase):
             result = list(da3.ll_iter(the_bad_ll))
 
 
-class TestCreateLL(unittest.TestCase):
+class Test01CreateLL(unittest.TestCase):
 
-    def test_empty(self):
+    def test00_empty(self):
         import llnode
 
         the_list = []
@@ -104,7 +104,7 @@ class TestCreateLL(unittest.TestCase):
             p = p.next
         self.assertIs(p, None)
 
-    def test_small_list(self):
+    def test01_small_list(self):
         import llnode
 
         the_list = [2, 8, 5]
@@ -118,7 +118,7 @@ class TestCreateLL(unittest.TestCase):
             p = p.next
         self.assertIs(p, None)
 
-    def test_small_iterable(self):
+    def test02_small_iterable(self):
         import llnode
 
         the_list = [2, 8, 5]
@@ -133,7 +133,7 @@ class TestCreateLL(unittest.TestCase):
             p = p.next
         self.assertIs(p, None)
 
-    def test_big_list(self):
+    def test03_big_list(self):
         import llnode
 
         big_num = 1_000_000
@@ -149,15 +149,15 @@ class TestCreateLL(unittest.TestCase):
         self.assertIs(p, None)
 
 
-class TestDidItRaise(unittest.TestCase):
+class Test02DidItRaise(unittest.TestCase):
 
-    def test_not_callable(self):
+    def test00_not_callable(self):
         bad_func = 42
 
         with self.assertRaises(TypeError):
             result = da3.did_it_raise(bad_func)
 
-    def test_no_raise_no_return(self):
+    def test01_no_raise_no_return(self):
         def ff():
             pass
 
@@ -165,7 +165,7 @@ class TestDidItRaise(unittest.TestCase):
 
         self.assertFalse(result)
 
-    def test_no_raise_return(self):
+    def test02_no_raise_return(self):
         def ff():
             return 42
 
@@ -173,7 +173,7 @@ class TestDidItRaise(unittest.TestCase):
 
         self.assertFalse(result)
 
-    def test_raise_TypeError(self):
+    def test03_raise_TypeError(self):
         def ff():
             raise(TypeError("Got some type probs, boss"))
 
@@ -181,7 +181,7 @@ class TestDidItRaise(unittest.TestCase):
 
         self.assertTrue(result)
 
-    def test_raise_IOError(self):
+    def test04_raise_IOError(self):
         def ff():
             raise(IOErro("Got some I/O probs, boss"))
 
@@ -190,30 +190,30 @@ class TestDidItRaise(unittest.TestCase):
         self.assertTrue(result)
 
 
-class TestMCSS(unittest.TestCase):
+class Test03MCSS(unittest.TestCase):
 
-    def test_empty(self):
+    def test00_empty(self):
         the_list = []
         result = da3.mcss(the_list)
         expected = (0, 0, 0, 0)
 
         self.assertEqual(result, expected)
 
-    def test_size_1_pos(self):
+    def test01_size_1_pos(self):
         the_list = [3]
         result = da3.mcss(the_list)
         expected = (3, 3, 3, 3)
 
         self.assertEqual(result, expected)
 
-    def test_size_1_neg(self):
+    def test02_size_1_neg(self):
         the_list = [-4]
         result = da3.mcss(the_list)
         expected = (0, 0, 0, -4)
 
         self.assertEqual(result, expected)
 
-    def test_example_1(self):
+    def test03_example_1(self):
         # First example from Assn 3 description
         the_list = [2, -3, 5, -4, 6, -10, 1]
         result = da3.mcss(the_list)
@@ -221,7 +221,7 @@ class TestMCSS(unittest.TestCase):
 
         self.assertEqual(result, expected)
 
-    def test_example_2(self):
+    def test04_example_2(self):
         # Second example from Assn 3 description
         the_list = [-1, -2, -3]
         result = da3.mcss(the_list)
@@ -229,7 +229,7 @@ class TestMCSS(unittest.TestCase):
 
         self.assertEqual(result, expected)
 
-    def test_other_indexable(self):
+    def test05_other_indexable(self):
         the_list = [2, -3, 5, -4, 6, -10, 1]
         the_indexable = tuple(the_list)
         result = da3.mcss(the_indexable)
@@ -237,7 +237,7 @@ class TestMCSS(unittest.TestCase):
 
         self.assertEqual(result, expected)
 
-    def test_long(self):
+    def test06_long(self):
         big_num = 1_000_000
         the_list = ([1]*big_num + [-20_000_000] + [2]*big_num
                   + [-500_000] + [3]*big_num)

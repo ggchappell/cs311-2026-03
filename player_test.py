@@ -26,93 +26,93 @@ import unittest  # For .TestCase, .main
 # **********************************************************************
 
 
-class TestFuncReturnTypes(unittest.TestCase):
+class Test00FuncReturnTypes(unittest.TestCase):
 
-    def test_init(self):
+    def test00_init(self):
         ob1 = player.Player("", "", 0)
 
         self.assertIsInstance(ob1, player.Player)
 
-    def test_get_real_name(self):
+    def test01_get_real_name(self):
         ob1 = player.Player("", "", 0)
 
         self.assertIsInstance(ob1.get_real_name(), str)
 
-    def test_get_user_name(self):
+    def test02_get_user_name(self):
         ob1 = player.Player("", "", 0)
 
         self.assertIsInstance(ob1.get_user_name(), str)
 
-    def test_get_games(self):
+    def test03_get_games(self):
         ob1 = player.Player("", "", 0)
 
         self.assertIsInstance(ob1.get_games(), int)
 
-    def test_set_real_name(self):
+    def test04_set_real_name(self):
         ob1 = player.Player("", "", 0)
 
         self.assertIs(ob1.set_real_name(""), None)
 
-    def test_set_user_name(self):
+    def test05_set_user_name(self):
         ob1 = player.Player("", "", 0)
 
         self.assertIs(ob1.set_user_name(""), None)
 
-    def test_set_games(self):
+    def test06_set_games(self):
         ob1 = player.Player("", "", 0)
 
         self.assertIs(ob1.set_games(0), None)
 
-    def test_inactive(self):
+    def test07_inactive(self):
         ob1 = player.Player("", "", 0)
 
         self.assertIsInstance(ob1.inactive(), bool)
 
-    def test_iadd(self):
+    def test08_iadd(self):
         ob1 = player.Player("", "", 0)
         ob1 += 1
 
         self.assertIsInstance(ob1, player.Player)
 
-    def test_isub(self):
+    def test09_isub(self):
         ob1 = player.Player("", "", 0)
         ob1 -= 0
 
         self.assertIsInstance(ob1, player.Player)
 
-    def test_eq(self):
+    def test10_eq(self):
         ob1 = player.Player("", "", 0)
         ob2 = player.Player("", "", 0)
 
         self.assertIsInstance(ob1 == ob2, bool)
 
-    def test_ne(self):
+    def test11_ne(self):
         ob1 = player.Player("", "", 0)
         ob2 = player.Player("", "", 0)
 
         self.assertIsInstance(ob1 != ob2, bool)
 
-    def test_str(self):
+    def test12_str(self):
         ob1 = player.Player("", "", 0)
 
         self.assertIsInstance(ob1.__str__(), str)
 
-    def test_repr(self):
+    def test13_repr(self):
         ob1 = player.Player("", "", 0)
 
         self.assertIsInstance(ob1.__repr__(), str)
 
 
-class TestInitGetSet(unittest.TestCase):
+class Test01InitGetSet(unittest.TestCase):
 
-    def test_initial_vals(self):
+    def test00_initial_vals(self):
         ob1 = player.Player("a", "b", 3)
 
         self.assertEqual(ob1.get_real_name(), "a")
         self.assertEqual(ob1.get_user_name(), "b")
         self.assertEqual(ob1.get_games(), 3)
 
-    def test_set_real_name(self):
+    def test02_set_real_name(self):
         ob1 = player.Player("a", "b", 3)
         ob1.set_real_name("a2")
 
@@ -120,7 +120,7 @@ class TestInitGetSet(unittest.TestCase):
         self.assertEqual(ob1.get_user_name(), "b")
         self.assertEqual(ob1.get_games(), 3)
 
-    def test_set_user_name(self):
+    def test03_set_user_name(self):
         ob1 = player.Player("a", "b", 3)
         ob1.set_user_name("b2")
 
@@ -128,7 +128,7 @@ class TestInitGetSet(unittest.TestCase):
         self.assertEqual(ob1.get_user_name(), "b2")
         self.assertEqual(ob1.get_games(), 3)
 
-    def test_set_games(self):
+    def test04_set_games(self):
         ob1 = player.Player("a", "b", 3)
         ob1.set_games(32)
 
@@ -137,9 +137,9 @@ class TestInitGetSet(unittest.TestCase):
         self.assertEqual(ob1.get_games(), 32)
 
 
-class TestIaddIsub(unittest.TestCase):
+class Test02IaddIsub(unittest.TestCase):
 
-    def test_iadd_pos(self):
+    def test00_iadd_pos(self):
         ob1 = player.Player("a", "b", 3)
         ob1_orig = ob1
         ob1 += 5
@@ -149,7 +149,7 @@ class TestIaddIsub(unittest.TestCase):
         self.assertEqual(ob1.get_user_name(), "b")
         self.assertEqual(ob1.get_games(), 8)
 
-    def test_iadd_neg(self):
+    def test01_iadd_neg(self):
         ob1 = player.Player("a", "b", 3)
         ob1_orig = ob1
         ob1 += -2
@@ -159,7 +159,7 @@ class TestIaddIsub(unittest.TestCase):
         self.assertEqual(ob1.get_user_name(), "b")
         self.assertEqual(ob1.get_games(), 1)
 
-    def test_isub_pos(self):
+    def test02_isub_pos(self):
         ob1 = player.Player("a", "b", 3)
         ob1_orig = ob1
         ob1 -= 2
@@ -169,7 +169,7 @@ class TestIaddIsub(unittest.TestCase):
         self.assertEqual(ob1.get_user_name(), "b")
         self.assertEqual(ob1.get_games(), 1)
 
-    def test_isub_neg(self):
+    def test03_isub_neg(self):
         ob1 = player.Player("a", "b", 3)
         ob1_orig = ob1
         ob1 -= -5
@@ -180,38 +180,38 @@ class TestIaddIsub(unittest.TestCase):
         self.assertEqual(ob1.get_games(), 8)
 
 
-class TestInactive(unittest.TestCase):
+class Test03Inactive(unittest.TestCase):
 
-    def test_original_value_inactive(self):
+    def test00_original_value_inactive(self):
         ob1 = player.Player("a", "b", 0)
 
         self.assertTrue(ob1.inactive())
 
-    def test_original_value_active(self):
+    def test01_original_value_active(self):
         ob2 = player.Player("x", "y", 2)
 
         self.assertFalse(ob2.inactive())
 
-    def test_value_chgd1_inactive(self):
+    def test02_value_chgd1_inactive(self):
         ob1 = player.Player("a", "b", 0)
         ob1 += 1
 
         self.assertFalse(ob1.inactive())
 
-    def test_value_chgd1_inactive(self):
+    def test03_value_chgd1_inactive(self):
         ob2 = player.Player("x", "y", 2)
         ob2 -= 2
 
         self.assertTrue(ob2.inactive())
 
-    def test_value_chgd2_inactive(self):
+    def test04_value_chgd2_inactive(self):
         ob1 = player.Player("a", "b", 0)
         ob1 += 1
         ob1 -= 1
 
         self.assertTrue(ob1.inactive())
 
-    def test_value_chgd2_inactive(self):
+    def test05_value_chgd2_inactive(self):
         ob2 = player.Player("x", "y", 2)
         ob2 -= 2
         ob2 += 2
@@ -219,16 +219,16 @@ class TestInactive(unittest.TestCase):
         self.assertFalse(ob2.inactive())
 
 
-class TestStrRepr(unittest.TestCase):
+class Test04StrRepr(unittest.TestCase):
 
-    def test_first_object(self):
+    def test00_first_object(self):
         ob1 = player.Player("abcde", "bcdef", 100)
         expected = "abcde (bcdef): 100"
 
         self.assertEqual(ob1.__str__(), expected)
         self.assertEqual(ob1.__repr__(), expected)
 
-    def test_second_object(self):
+    def test01_second_object(self):
         ob2 = player.Player("", "", 0)
         expected = " (): 0"
 
@@ -236,9 +236,9 @@ class TestStrRepr(unittest.TestCase):
         self.assertEqual(ob2.__repr__(), expected)
 
 
-class TestEqNe(unittest.TestCase):
+class Test05EqNe(unittest.TestCase):
 
-    def test_equality(self):
+    def test00_equality(self):
         ob1 = player.Player("abc", "def", 100)  # Base
         ob2 = player.Player("abc", "def", 100)  # Same
         ob3 = player.Player("ABC", "def", 100)  # Different real name
@@ -255,7 +255,7 @@ class TestEqNe(unittest.TestCase):
         self.assertFalse(ob1 == ob5)
         self.assertFalse(ob5 == ob1)
 
-    def test_inequality(self):
+    def test01_inequality(self):
         ob1 = player.Player("abc", "def", 100)  # Base
         ob2 = player.Player("abc", "def", 100)  # Same
         ob3 = player.Player("ABC", "def", 100)  # Different real name
@@ -273,23 +273,23 @@ class TestEqNe(unittest.TestCase):
         self.assertTrue(ob5 != ob1)
 
 
-class TestLargeValues(unittest.TestCase):
+class Test06LargeValues(unittest.TestCase):
 
-    def test_long_real_name(self):
+    def test00_long_real_name(self):
         ob1 = player.Player("abc", "def", 100)
         long_string = "abcdefghij" * 1000000
         ob1.set_real_name(long_string)
 
         self.assertEqual(ob1.get_real_name(), long_string)
 
-    def test_long_user_name(self):
+    def test01_long_user_name(self):
         ob1 = player.Player("abc", "def", 100)
         long_string = "abcdefghij" * 1000000
         ob1.set_user_name(long_string)
 
         self.assertEqual(ob1.get_user_name(), long_string)
 
-    def test_large_games(self):
+    def test02_large_games(self):
         ob1 = player.Player("abc", "def", 100)
         large_int = 123 ** 2050  # Big, but still printable
         ob1.set_games(large_int)
