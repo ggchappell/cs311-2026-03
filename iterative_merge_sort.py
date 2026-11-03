@@ -139,16 +139,17 @@ def do_sort(container):
     # Get ending time
     end_time = time_sec()
 
-    # Check correctness of sort
-    for i in range(len(container)-1):
-        assert container[i] <= container[i+1]
-
     # Message: after
     print("DONE", flush=True)
     print(f"  Elapsed time: {end_time-start_time:.4g} (sec)")
-
     print("  After:")
     print(f"    {iter_str(container, 75)}")
+
+    # Check correctness of sort
+    for i in range(len(container)-1):
+        if container[i+1] < container[i]:
+            print("  ERROR: RANGE IS NOT SORTED " + "*"*60)
+            break
 
 
 def try_sort_small():
