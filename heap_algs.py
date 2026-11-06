@@ -163,7 +163,6 @@ def heap_make(container, index1=None, index2=None):
     size = index2 - index1
     assert size >= 0
 
-    last_non_leaf = (size-2) // 2
     for curr in range((size-2) // 2, -1, -1):
         _sift_down(container, index1, index2, index1+curr)
 
