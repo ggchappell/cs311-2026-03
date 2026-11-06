@@ -1,10 +1,14 @@
 #!/usr/bin/env python3
-# heap_sort.py  UNFINISHED
+# heap_sort.py
 # Glenn G. Chappell
-# 2026-11-05
+# Started: 2026-11-05
+# Updated: 2026-11-06
 """Sorting Demo: Heap Sort.
 For CS 311 Fall 2026
 """
+
+
+import heap_algs  # For .heap_make, .heap_to_sorted
 
 
 # Size of large datasets
@@ -19,6 +23,8 @@ def heap_sort(container, index1=None, index2=None):
     Range to be sorted is [container[index1], container[index2]),
     or the whole container if index1, index2 are not passed.
 
+    Uses heap_algs.heap_make, .heap_to_sorted.
+
     Pre:
     * Container is an indexable sequence.
     * If index1, index2 are both given, then:
@@ -27,7 +33,16 @@ def heap_sort(container, index1=None, index2=None):
       * Integers in [index1, index2) are valid indices for container.
     """
 
-    # TODO: WRITE THIS!!!
+    if index1 is None:
+        index1 = 0
+    assert isinstance(index1, int)
+    if index2 is None:
+        index2 = len(container)
+    assert isinstance(index2, int)
+    assert index2 >= index1
+
+    heap_algs.heap_make(container, index1, index2)
+    heap_algs.heap_to_sorted(container, index1, index2)
 
 
 def do_sort(container):
