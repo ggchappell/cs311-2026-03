@@ -368,7 +368,7 @@ class Test02Indices(unittest.TestCase):
 
 class Test03Stability(unittest.TestCase):
 
-    def test00_stable_size_9(self):
+    def test00_stable_size_2(self):
         data1 = [Comp(1,2),Comp(1,1)]
 
         data2 = data1.copy()
