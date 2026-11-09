@@ -369,6 +369,15 @@ class Test02Indices(unittest.TestCase):
 class Test03Stability(unittest.TestCase):
 
     def test00_stable_size_9(self):
+        data1 = [Comp(1,2),Comp(1,1)]
+
+        data2 = data1.copy()
+        treesort.treesort(data2)
+        data3 = sorted(data1)
+
+        self.assertEqual(data2, data3)
+
+    def test01_stable_size_9(self):
         data1 = [Comp(3,3),Comp(2,2),Comp(1,1),
                  Comp(3,1),Comp(2,3),Comp(1,2),
                  Comp(3,2),Comp(2,1),Comp(1,3)]
