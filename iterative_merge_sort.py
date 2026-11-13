@@ -89,7 +89,7 @@ def stable_merge(container, begin, middle, end):
     in2 = middle
     out = 0
 
-    # Merge two sorted lists into a single list in buff.
+    # Merge two sorted lists into a single list in buffer.
     while in1 != middle and in2 != end:
         if container[in2] < container[in1]:  # Do this way to be stable
             buffer[out] = container[in2]
