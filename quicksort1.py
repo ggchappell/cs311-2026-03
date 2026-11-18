@@ -23,7 +23,7 @@ def quicksort(container, index1=None, index2=None):
     Uses h_partition.
 
     Pre:
-    * Container is an indexable sequence.
+    * container is an indexable sequence.
     * If index1, index2 are both given, then:
       * index1 and index2 have type int.
       * index1 <= index2.
@@ -66,7 +66,7 @@ def h_partition(container, index1, index2, pivot_index):
     New index of pivot is returned.
 
     Pre:
-    * Container is an indexable sequence.
+    * container is an indexable sequence.
     * index1, index2, pivot_index have type int.
     * index1 <= pivot_index < index2.
     * Integers in [index1, index2) are valid indices for container.

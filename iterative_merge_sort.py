@@ -22,7 +22,7 @@ def iterative_merge_sort(container, index1=None, index2=None):
     Uses stable_merge.
 
     Pre:
-    * Container is an indexable sequence.
+    * container is an indexable sequence.
     * If index1, index2 are both given, then:
       * index1 and index2 have type int.
       * index1 <= index2.
@@ -74,7 +74,7 @@ def stable_merge(container, begin, middle, end):
       * [container[middle], container[end])
 
     Pre:
-    * Container is an indexable sequence.
+    * container is an indexable sequence.
     * begin, middle, end have type int.
     * begin <= middle <= end.
     * Integers in [begin, end) are valid indices for container.

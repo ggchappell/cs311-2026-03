@@ -21,7 +21,7 @@ def bubble_sort(container, index1=None, index2=None):
     or the whole container if index1, index2 are not passed.
 
     Pre:
-    * Container is an indexable sequence.
+    * container is an indexable sequence.
     * If index1, index2 are both given, then:
       * index1 and index2 have type int.
       * index1 <= index2.

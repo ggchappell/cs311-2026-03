@@ -26,7 +26,7 @@ def heap_sort(container, index1=None, index2=None):
     Uses heap_algs.heap_make, .heap_to_sorted.
 
     Pre:
-    * Container is an indexable sequence.
+    * container is an indexable sequence.
     * If index1, index2 are both given, then:
       * index1 and index2 have type int.
       * index1 <= index2.
