@@ -3,6 +3,7 @@
 # 2026-11-18
 """Class for function objects that reverse items.
 For CS 311 Fall 2026
+Used in Assignment 8 Exercise B
 """
 
 
