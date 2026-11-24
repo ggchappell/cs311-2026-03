@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
-# graph_traverse.py  UNFINISHED
+# graph_traverse.py
 # Glenn G. Chappell
-# 2026-11-22
-"""Graph traversals: DFS.
+# Started: 2026-11-22
+# Updated: 2026-11-23
+"""Graph traversals: DFS & BFS.
 For CS 311 Fall 2026
 """
 
 
-import bisect       # For .bisect_right
+import collections  # For .deque
+import bisect       # For .bisect_left
 
 
 # CONVENTIONS
@@ -31,6 +33,49 @@ import bisect       # For .bisect_right
 # integer in 0 .. V-1) separated by blanks.
 
 
+def dfs_helper(adj_lists, start, visited):
+    """Given a graph, start vertex, and vertex-visited data, print DFS
+    of unvisited vertices reachable from start vertex.
+
+    Parameters:
+    * adj_lists - Adjacency lists for a graph, formatted as described
+      above.
+    * start - Index (0 .. V-1) of the start vertex.
+    * visited - List of bool, size V. visited[i] is True if vertex i has
+      been visited. The altered version of this list, with visited
+      vertices marked as such, is available to the caller.
+    """
+
+    assert isinstance(adj_lists, list)
+    assert isinstance(start, int)
+    assert 0 <= start < len(adj_lists)
+    assert isinstance(visited, list)
+    assert len(visited) == len(adj_lists)
+
+    s = []           # Stack holding vertices to visit
+
+    s.append(start)  # Push start vertex
+
+    while s:            # Loop while Stack is nonempty
+        # Get next vertex
+        curr = s.pop()  # Pop Stack
+
+        # Make sure it is unvisited
+        if visited[curr]:
+            continue
+
+        # Visit it
+        print(f"{curr} ", end="")
+        visited[curr] = True
+
+        # And push its unvisited neighbors
+        # Do this in reverse order, so we pop lower numbers first.
+        # Note that *reversed* does not make a copy of the list.
+        for nbr in reversed(adj_lists[curr]):
+            if not visited[nbr]:
+                s.append(nbr)
+
+
 def dfs(adj_lists):
     """Given a graph, print a DFS (no ending newline).
 
@@ -39,12 +84,83 @@ def dfs(adj_lists):
       above.
     """
 
-    print("<NOT WRITTEN>", end="")  # Dummy
-    # TODO: WRITE THIS!!!
+    assert isinstance(adj_lists, list)
+
+    # Set up visited array
+    V = len(adj_lists)
+    visited = [ False for _ in adj_lists ]
+
+    # Try DFS starting at each vertex
+    # visited is modified by dfs_helper call. Modified version is passed
+    # to the next call, and so on.
+    for start in range(V):
+        dfs_helper(adj_lists, start, visited);
+
+
+def bfs_helper(adj_lists, start, visited):
+    """Given a graph, start vertex, and vertex-visited data, print BFS
+    of unvisited vertices reachable from start vertex.
+
+    Parameters:
+    * adj_lists - Adjacency lists for a graph, formatted as described
+      above.
+    * start - Index (0 .. V-1) of the start vertex.
+    * visited - List of bool, size V. visited[i] is True if vertex i has
+      been visited. The altered version of this list, with visited
+      vertices marked as such, is available to the caller.
+    """
+
+    assert isinstance(adj_lists, list)
+    assert isinstance(start, int)
+    assert 0 <= start < len(adj_lists)
+    assert isinstance(visited, list)
+    assert len(visited) == len(adj_lists)
+
+    q = collections.deque()  # Queue holding vertices to visit
+
+    q.append(start)  # Enqueue start vertex
+
+    while q:            # Loop while Queue is nonempty
+        # Get next vertex
+        curr = q.popleft()  # Dequeue
+
+        # Make sure it is unvisited
+        if visited[curr]:
+            continue
+
+        # Visit it
+        print(f"{curr} ", end="")
+        visited[curr] = True
+
+        # And enqueue its unvisited neighbors
+        for nbr in adj_lists[curr]:
+            if not visited[nbr]:
+                q.append(nbr)
+
+
+def bfs(adj_lists):
+    """Given a graph, print a BFS (no ending newline).
+
+    Parameters:
+    * adj_lists - Adjacency lists for a graph, formatted as described
+      above.
+    """
+
+    assert isinstance(adj_lists, list)
+
+    # Set up visited array
+    V = len(adj_lists)
+    visited = [ False for _ in adj_lists ]
+
+    # Try BFS starting at each vertex
+    # visited is modified by bfs_helper call. Modified version is passed
+    # to the next call, and so on.
+    for start in range(V):
+        bfs_helper(adj_lists, start, visited);
 
 
 def print_traversals(adj_lists):
-    """Given a graph, print a DFS.
+    """Given a graph, print a DFS and BFS.
 
     Parameters:
     * adj_lists - Adjacency lists for a graph, formatted as described
@@ -55,6 +171,10 @@ def print_traversals(adj_lists):
 
     print("DFS: ", end="")
     dfs(adj_lists)
+    print()
+
+    print("BFS: ", end="")
+    bfs(adj_lists)
     print()
 
 
@@ -94,13 +214,16 @@ def add_edge(adj_lists, a, b):
     assert 0 <= a < len(adj_lists)
     assert isinstance(b, int)
     assert 0 <= b < len(adj_lists)
+    assert a != b
 
     # Insert b in adj list for vertex a; find spot with Binary Search.
-    insert_pt = bisect.bisect_right(adj_lists[a], b)
+    insert_pt = bisect.bisect_left(adj_lists[a], b)
+    assert insert_pt == len(adj_lists[a]) or adj_lists[a][insert_pt] != b
     adj_lists[a].insert(insert_pt, b)
 
     # Insert a in adj list for vertex b; find spot with Binary Search.
-    insert_pt = bisect.bisect_right(adj_lists[b], a)
+    insert_pt = bisect.bisect_left(adj_lists[b], a)
+    assert insert_pt == len(adj_lists[b]) or adj_lists[b][insert_pt] != a
     adj_lists[b].insert(insert_pt, a)
 
 
@@ -110,8 +233,8 @@ def make_adj_lists_tree():
     Graph: tree.
     7 vertices: 0 .. 6.
     Adjacencies: 0 - 1, 0 - 2
-                 1 - 3, 1 - 4
-                 2 - 5, 2 - 6
+                 1 - 5, 1 - 6
+                 2 - 3, 2 - 4
     """
 
     V = 7
@@ -178,7 +301,7 @@ def user_pause(msg):
 
 
 # Main program
-# Do DFS on various graphs, printing results.
+# Do DFS & BFS on various graphs, printing results.
 
 if __name__ == "__main__":
     # Opening Message
